@@ -1046,5 +1046,7 @@ class M_teknisi extends CI_Model
         $this->db->where('CSV',1);
         $this->db->update('odp_stat',$data);
     }
+
+    
 }
 ?>

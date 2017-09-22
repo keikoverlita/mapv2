@@ -874,6 +874,25 @@ class Maps extends CI_Controller {
         //output to json format
         echo json_encode($output);
     }
+		function ExportCSVaku()
+    {
+        $this->load->dbutil();
+        $this->load->helper('file');
+        $this->load->helper('download');
+        $delimiter = ",";
+        $newline = "\r\n";
+        $filename = "odp_by_akupansi.csv";
+				$query = "SELECT * FROM odp_aku WHERE 1";
+	      $result = $this->db->query($query);
+        $data = $this->dbutil->csv_from_result($result, $delimiter, $newline);
+        force_download($filename, $data);
+				if ($result) {
+					echo json_encode(TRUE);
+				}
+				else {
+					echo json_encode(FALSE);
+				}
+    }
 
     public function ajax_list_maps()
     {

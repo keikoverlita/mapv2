@@ -757,6 +757,12 @@
                         </a>
                       </li>
                       <li>
+                        <a href="<?php echo site_url('Maps/ExportCSVaku') ?>">
+                        <i class="fa fa-map"></i>
+                        <span>Download File ODP By Akupansi</span>
+                        </a>
+                      </li>
+                      <li>
                         <a href="#" onclick="hapuscariodp(),uploadCSVaku()">
                         <i class="fa fa-map"></i>
                         <span>Upload File By Akupansi</span>
@@ -3015,7 +3021,19 @@ function findND(){
     }
   });
 }
-
+function ExportCSVaku(){
+  $.ajax({
+    url: '<?php echo site_url('Maps/ExportCSVaku()') ?>',
+    type: 'POST',
+    dataType: 'JSON',
+    success:function(){
+      alert('Berhasil');
+    },
+    error:function(){
+      alert('gagal');
+    }
+  });
+}
 function findKoordinat(){
   var a = $('#cariLat').val();
   var b = $('#cariLng').val();
