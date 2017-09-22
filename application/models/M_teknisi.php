@@ -204,7 +204,7 @@ class M_teknisi extends CI_Model
     function upload_sampledata_csv() {
         $fp = fopen($_FILES['file1']['tmp_name'],'r');
         if($fp){
-            while($csv_line = fgetcsv($fp,1024,","))
+            while($csv_line = fgetcsv($fp,20000,";"))
                 {
                     for ($i = 0, $j = count($csv_line); $i < $j; $i++)
                     {
@@ -268,7 +268,7 @@ class M_teknisi extends CI_Model
     function upload_sampledataaku_csv() {
         $fp = fopen($_FILES['file3']['tmp_name'],'r');
         if($fp){
-            while($csv_line = fgetcsv($fp,1024,","))
+            while($csv_line = fgetcsv($fp,20000,";"))
                 {
                     for ($i = 0, $j = count($csv_line); $i < $j; $i++)
                     {

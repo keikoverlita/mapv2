@@ -749,8 +749,8 @@ class Maps extends CI_Controller {
 
 		public function upload_sampledataaku()
     {
-        $x = $this->m_teknisi->upload_sampledataaku_csv();
-        return $x;
+        $y = $this->m_teknisi->upload_sampledataaku_csv();
+        return $y;
     }
 
     public function ajax_get_csv()

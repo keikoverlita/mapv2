@@ -1796,8 +1796,8 @@ $(function() {
       {
 
         alert('Berhasil');
-        $('#submitBtn').text('Save'); //change button text
-        $('#submitBtn').attr('disabled',false); //set button disable
+        $('#submitBtnaku').text('Save'); //change button text
+        $('#submitBtnaku').attr('disabled',false); //set button disable
         $('#ModalCSVaku').modal('hide');
       },
       error: function (jqXHR, textStatus, errorThrown)
