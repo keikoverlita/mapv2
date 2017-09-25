@@ -757,12 +757,6 @@
                         </a>
                       </li>
                       <li>
-                        <a href="<?php echo site_url('Maps/ExportCSVaku') ?>">
-                        <i class="fa fa-map"></i>
-                        <span>Download File ODP By Akupansi</span>
-                        </a>
-                      </li>
-                      <li>
                         <a href="#" onclick="hapuscariodp(),uploadCSVaku()">
                         <i class="fa fa-map"></i>
                         <span>Upload File By Akupansi</span>
@@ -792,6 +786,12 @@
                     </ul>
                   </li>
                 </ul>
+              </li>
+              <li>
+                <a href="<?php echo site_url('Maps/ExportCSVaku') ?>">
+                <i class="fa fa-download"></i>
+                <span>Download File ODP</span>
+                </a>
               </li>
               <li>
                 <a href="https://fusiontables.google.com/data?docid=1tJlcTkjjdqXkgDmKN_AA1S4CkRmEo2P1o5f2vadk#rows:id=1" target="_blank">

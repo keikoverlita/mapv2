@@ -874,7 +874,8 @@ class Maps extends CI_Controller {
         //output to json format
         echo json_encode($output);
     }
-		function ExportCSVaku()
+
+	function ExportCSVaku()
     {
         $this->load->dbutil();
         $this->load->helper('file');
