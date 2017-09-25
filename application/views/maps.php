@@ -77,9 +77,9 @@
                     <span>AKUPANSI</span>
                     </a>
                     <ul class="treeview-menu">
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_SMY('AKUPANSI 0%')"><i id="aku_SMY_0" class="fa fa-circle-o"></i>0%</a></li>
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_SMY('AKUPANSI 0,1% - 40%')"><i id="aku_SMY_1" class="fa fa-circle-o"></i>0,1% - 40%</a></li>
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_SMY('AKUPANSI 41% - 80%')"><i id="aku_SMY_2" class="fa fa-circle-o"></i>41% - 80%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_SMY('AKUPANSI 0% ')"><i id="aku_SMY_0" class="fa fa-circle-o"></i>0%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_SMY('AKUPANSI 0,1%- 40%')"><i id="aku_SMY_1" class="fa fa-circle-o"></i>0,1% - 40%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_SMY('AKUPANSI 41%- 80%')"><i id="aku_SMY_2" class="fa fa-circle-o"></i>41% - 80%</a></li>
                       <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_SMY('DIATAS 80%')"><i id="aku_SMY_3" class="fa fa-circle-o"></i>> 80%</a></li>
                     </ul>
                     </li>
@@ -111,9 +111,9 @@
                     <span>AKUPANSI</span>
                     </a>
                     <ul class="treeview-menu">
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_SAU('AKUPANSI 0%')"><i id="aku_SAU_0" class="fa fa-circle-o"></i>0%</a></li>
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_SAU('AKUPANSI 0,1% - 40%')"><i id="aku_SAU_1" class="fa fa-circle-o"></i>0,1% - 40%</a></li>
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_SAU('AKUPANSI 41% - 80%')"><i id="aku_SAU_2" class="fa fa-circle-o"></i>41% - 80%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_SAU('AKUPANSI 0% ')"><i id="aku_SAU_0" class="fa fa-circle-o"></i>0%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_SAU('AKUPANSI 0,1%- 40%')"><i id="aku_SAU_1" class="fa fa-circle-o"></i>0,1% - 40%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_SAU('AKUPANSI 41%- 80%')"><i id="aku_SAU_2" class="fa fa-circle-o"></i>41% - 80%</a></li>
                       <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_SAU('DIATAS 80%')"><i id="aku_SAU_3" class="fa fa-circle-o"></i>> 80%</a></li>
                     </ul>
                     </li>
@@ -145,9 +145,9 @@
                     <span>AKUPANSI</span>
                     </a>
                     <ul class="treeview-menu">
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_BNO('AKUPANSI 0%')"><i id="aku_BNO_0" class="fa fa-circle-o"></i>0%</a></li>
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_BNO('AKUPANSI 0,1% - 40%')"><i id="aku_BNO_1" class="fa fa-circle-o"></i>0,1% - 40%</a></li>
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_BNO('AKUPANSI 41% - 80%')"><i id="aku_BNO_2" class="fa fa-circle-o"></i>41% - 80%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_BNO('AKUPANSI 0% ')"><i id="aku_BNO_0" class="fa fa-circle-o"></i>0%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_BNO('AKUPANSI 0,1%- 40%')"><i id="aku_BNO_1" class="fa fa-circle-o"></i>0,1% - 40%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_BNO('AKUPANSI 41%- 80%')"><i id="aku_BNO_2" class="fa fa-circle-o"></i>41% - 80%</a></li>
                       <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_BNO('DIATAS 80%')"><i id="aku_BNO_3" class="fa fa-circle-o"></i>> 80%</a></li>
                     </ul>
                     </li>
@@ -179,9 +179,9 @@
                     <span>AKUPANSI</span>
                     </a>
                     <ul class="treeview-menu">
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_JBR('AKUPANSI 0%')"><i id="aku_JBR_0" class="fa fa-circle-o"></i>0%</a></li>
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_JBR('AKUPANSI 0,1% - 40%')"><i id="aku_JBR_1" class="fa fa-circle-o"></i>0,1% - 40%</a></li>
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_JBR('AKUPANSI 41% - 80%')"><i id="aku_JBR_2" class="fa fa-circle-o"></i>41% - 80%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_JBR('AKUPANSI 0% ')"><i id="aku_JBR_0" class="fa fa-circle-o"></i>0%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_JBR('AKUPANSI 0,1%- 40%')"><i id="aku_JBR_1" class="fa fa-circle-o"></i>0,1% - 40%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_JBR('AKUPANSI 41%- 80%')"><i id="aku_JBR_2" class="fa fa-circle-o"></i>41% - 80%</a></li>
                       <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_JBR('DIATAS 80%')"><i id="aku_JBR_3" class="fa fa-circle-o"></i>> 80%</a></li>
                     </ul>
                     </li>
@@ -213,9 +213,9 @@
                     <span>AKUPANSI</span>
                     </a>
                     <ul class="treeview-menu">
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_KLM('AKUPANSI 0%')"><i id="aku_KLM_0" class="fa fa-circle-o"></i>0%</a></li>
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_KLM('AKUPANSI 0,1% - 40%')"><i id="aku_KLM_1" class="fa fa-circle-o"></i>0,1% - 40%</a></li>
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_KLM('AKUPANSI 41% - 80%')"><i id="aku_KLM_2" class="fa fa-circle-o"></i>41% - 80%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_KLM('AKUPANSI 0% ')"><i id="aku_KLM_0" class="fa fa-circle-o"></i>0%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_KLM('AKUPANSI 0,1%- 40%')"><i id="aku_KLM_1" class="fa fa-circle-o"></i>0,1% - 40%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_KLM('AKUPANSI 41%- 80%')"><i id="aku_KLM_2" class="fa fa-circle-o"></i>41% - 80%</a></li>
                       <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_KLM('DIATAS 80%')"><i id="aku_KLM_3" class="fa fa-circle-o"></i>> 80%</a></li>
                     </ul>
                     </li>
@@ -247,9 +247,9 @@
                     <span>AKUPANSI</span>
                     </a>
                     <ul class="treeview-menu">
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_KUT('AKUPANSI 0%')"><i id="aku_KUT_0" class="fa fa-circle-o"></i>0%</a></li>
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_KUT('AKUPANSI 0,1% - 40%')"><i id="aku_KUT_1" class="fa fa-circle-o"></i>0,1% - 40%</a></li>
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_KUT('AKUPANSI 41% - 80%')"><i id="aku_KUT_2" class="fa fa-circle-o"></i>41% - 80%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_KUT('AKUPANSI 0% ')"><i id="aku_KUT_0" class="fa fa-circle-o"></i>0%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_KUT('AKUPANSI 0,1%- 40%')"><i id="aku_KUT_1" class="fa fa-circle-o"></i>0,1% - 40%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_KUT('AKUPANSI 41%- 80%')"><i id="aku_KUT_2" class="fa fa-circle-o"></i>41% - 80%</a></li>
                       <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_KUT('DIATAS 80%')"><i id="aku_KUT_3" class="fa fa-circle-o"></i>> 80%</a></li>
                     </ul>
                     </li>
@@ -281,9 +281,9 @@
                     <span>AKUPANSI</span>
                     </a>
                     <ul class="treeview-menu">
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_MMN('AKUPANSI 0%')"><i id="aku_MMN_0" class="fa fa-circle-o"></i>0%</a></li>
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_MMN('AKUPANSI 0,1% - 40%')"><i id="aku_MMN_1" class="fa fa-circle-o"></i>0,1% - 40%</a></li>
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_MMN('AKUPANSI 41% - 80%')"><i id="aku_MMN_2" class="fa fa-circle-o"></i>41% - 80%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_MMN('AKUPANSI 0% ')"><i id="aku_MMN_0" class="fa fa-circle-o"></i>0%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_MMN('AKUPANSI 0,1%- 40%')"><i id="aku_MMN_1" class="fa fa-circle-o"></i>0,1% - 40%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_MMN('AKUPANSI 41%- 80%')"><i id="aku_MMN_2" class="fa fa-circle-o"></i>41% - 80%</a></li>
                       <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_MMN('DIATAS 80%')"><i id="aku_MMN_3" class="fa fa-circle-o"></i>> 80%</a></li>
                     </ul>
                     </li>
@@ -315,9 +315,9 @@
                     <span>AKUPANSI</span>
                     </a>
                     <ul class="treeview-menu">
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_NSD('AKUPANSI 0%')"><i id="aku_NSD_0" class="fa fa-circle-o"></i>0%</a></li>
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_NSD('AKUPANSI 0,1% - 40%')"><i id="aku_NSD_1" class="fa fa-circle-o"></i>0,1% - 40%</a></li>
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_NSD('AKUPANSI 41% - 80%')"><i id="aku_NSD_2" class="fa fa-circle-o"></i>41% - 80%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_NSD('AKUPANSI 0% ')"><i id="aku_NSD_0" class="fa fa-circle-o"></i>0%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_NSD('AKUPANSI 0,1%- 40%')"><i id="aku_NSD_1" class="fa fa-circle-o"></i>0,1% - 40%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_NSD('AKUPANSI 41%- 80%')"><i id="aku_NSD_2" class="fa fa-circle-o"></i>41% - 80%</a></li>
                       <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_NSD('DIATAS 80%')"><i id="aku_NSD_3" class="fa fa-circle-o"></i>> 80%</a></li>
                     </ul>
                     </li>
@@ -349,9 +349,9 @@
                     <span>AKUPANSI</span>
                     </a>
                     <ul class="treeview-menu">
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_SWI('AKUPANSI 0%')"><i id="aku_SWI_0" class="fa fa-circle-o"></i>0%</a></li>
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_SWI('AKUPANSI 0,1% - 40%')"><i id="aku_SWI_1" class="fa fa-circle-o"></i>0,1% - 40%</a></li>
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_SWI('AKUPANSI 41% - 80%')"><i id="aku_SWI_2" class="fa fa-circle-o"></i>41% - 80%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_SWI('AKUPANSI 0% ')"><i id="aku_SWI_0" class="fa fa-circle-o"></i>0%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_SWI('AKUPANSI 0,1%- 40%')"><i id="aku_SWI_1" class="fa fa-circle-o"></i>0,1% - 40%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_SWI('AKUPANSI 41%- 80%')"><i id="aku_SWI_2" class="fa fa-circle-o"></i>41% - 80%</a></li>
                       <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_SWI('DIATAS 80%')"><i id="aku_SWI_3" class="fa fa-circle-o"></i>> 80%</a></li>
                     </ul>
                     </li>
@@ -383,9 +383,9 @@
                     <span>AKUPANSI</span>
                     </a>
                     <ul class="treeview-menu">
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_TOP('AKUPANSI 0%')"><i id="aku_TOP_0" class="fa fa-circle-o"></i>0%</a></li>
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_TOP('AKUPANSI 0,1% - 40%')"><i id="aku_TOP_1" class="fa fa-circle-o"></i>0,1% - 40%</a></li>
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_TOP('AKUPANSI 41% - 80%')"><i id="aku_TOP_2" class="fa fa-circle-o"></i>41% - 80%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_TOP('AKUPANSI 0% ')"><i id="aku_TOP_0" class="fa fa-circle-o"></i>0%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_TOP('AKUPANSI 0,1%- 40%')"><i id="aku_TOP_1" class="fa fa-circle-o"></i>0,1% - 40%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_TOP('AKUPANSI 41%- 80%')"><i id="aku_TOP_2" class="fa fa-circle-o"></i>41% - 80%</a></li>
                       <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_TOP('DIATAS 80%')"><i id="aku_TOP_3" class="fa fa-circle-o"></i>> 80%</a></li>
                     </ul>
                     </li>
@@ -417,9 +417,9 @@
                     <span>AKUPANSI</span>
                     </a>
                     <ul class="treeview-menu">
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_UBN('AKUPANSI 0%')"><i id="aku_UBN_0" class="fa fa-circle-o"></i>0%</a></li>
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_UBN('AKUPANSI 0,1% - 40%')"><i id="aku_UBN_1" class="fa fa-circle-o"></i>0,1% - 40%</a></li>
-                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_UBN('AKUPANSI 41% - 80%')"><i id="aku_UBN_2" class="fa fa-circle-o"></i>41% - 80%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_UBN('AKUPANSI 0% ')"><i id="aku_UBN_0" class="fa fa-circle-o"></i>0%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_UBN('AKUPANSI 0,1%- 40%')"><i id="aku_UBN_1" class="fa fa-circle-o"></i>0,1% - 40%</a></li>
+                      <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_UBN('AKUPANSI 41%- 80%')"><i id="aku_UBN_2" class="fa fa-circle-o"></i>41% - 80%</a></li>
                       <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_UBN('DIATAS 80%')"><i id="aku_UBN_3" class="fa fa-circle-o"></i>> 80%</a></li>
                     </ul>
                     </li>
@@ -791,6 +791,12 @@
                 <a href="<?php echo site_url('Maps/ExportCSVaku') ?>">
                 <i class="fa fa-download"></i>
                 <span>Download File ODP</span>
+                </a>
+              </li>
+              <li>
+                <a onclick="lele()">
+                <i class="fa fa-download"></i>
+                <span>LELE</span>
                 </a>
               </li>
               <li>
@@ -1339,6 +1345,11 @@ var table;
 var prev_win = false;
 var count;
 var icon;
+
+function lele(){
+  alert('<?php date_default_timezone_set('Asia/Hong_Kong');
+               echo date('Y-m-d H:i:s'); ?>');
+}
 
 $(document).ready(function(){
   var sto1 = '';
@@ -3205,13 +3216,13 @@ function findODP(){
 }
 
 function getIcon(n,m){
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     icon = 'http://labs.google.com/ridefinder/images/mm_20_white.png';
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     icon = 'http://labs.google.com/ridefinder/images/mm_20_green.png';
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     icon = 'http://labs.google.com/ridefinder/images/mm_20_yellow.png';
   }
   else if(n == "DIATAS 80%"){
@@ -4378,9 +4389,9 @@ function createMarkerDP_UBN(nama_kelas,nilai){
 
 function createMarker_SMY(nama_kelas,nilai){
   if(nama_kelas.className == "fa fa-circle-o"){
-    if ((nilai == "AKUPANSI 0%")
-      ||(nilai == "AKUPANSI 0,1% - 40%")
-      ||(nilai == "AKUPANSI 41% - 80%")
+    if ((nilai == "AKUPANSI 0% ")
+      ||(nilai == "AKUPANSI 0,1%- 40%")
+      ||(nilai == "AKUPANSI 41%- 80%")
       ||(nilai == "DIATAS 80%"))
     {
       $.ajax({
@@ -4524,9 +4535,9 @@ function createMarker_SMY(nama_kelas,nilai){
 
 function createMarker_SAU(nama_kelas,nilai){
   if(nama_kelas.className == "fa fa-circle-o"){
-    if ((nilai == "AKUPANSI 0%")
-      ||(nilai == "AKUPANSI 0,1% - 40%")
-      ||(nilai == "AKUPANSI 41% - 80%")
+    if ((nilai == "AKUPANSI 0% ")
+      ||(nilai == "AKUPANSI 0,1%- 40%")
+      ||(nilai == "AKUPANSI 41%- 80%")
       ||(nilai == "DIATAS 80%"))
     {
       $.ajax({
@@ -4670,9 +4681,9 @@ function createMarker_SAU(nama_kelas,nilai){
 
 function createMarker_BNO(nama_kelas,nilai){
   if(nama_kelas.className == "fa fa-circle-o"){
-    if ((nilai == "AKUPANSI 0%")
-      ||(nilai == "AKUPANSI 0,1% - 40%")
-      ||(nilai == "AKUPANSI 41% - 80%")
+    if ((nilai == "AKUPANSI 0% ")
+      ||(nilai == "AKUPANSI 0,1%- 40%")
+      ||(nilai == "AKUPANSI 41%- 80%")
       ||(nilai == "DIATAS 80%"))
     {
       $.ajax({
@@ -4816,9 +4827,9 @@ function createMarker_BNO(nama_kelas,nilai){
 
 function createMarker_JBR(nama_kelas,nilai){
   if(nama_kelas.className == "fa fa-circle-o"){
-    if ((nilai == "AKUPANSI 0%")
-      ||(nilai == "AKUPANSI 0,1% - 40%")
-      ||(nilai == "AKUPANSI 41% - 80%")
+    if ((nilai == "AKUPANSI 0% ")
+      ||(nilai == "AKUPANSI 0,1%- 40%")
+      ||(nilai == "AKUPANSI 41%- 80%")
       ||(nilai == "DIATAS 80%"))
     {
       $.ajax({
@@ -4962,9 +4973,9 @@ function createMarker_JBR(nama_kelas,nilai){
 
 function createMarker_UBN(nama_kelas,nilai){
   if(nama_kelas.className == "fa fa-circle-o"){
-    if ((nilai == "AKUPANSI 0%")
-      ||(nilai == "AKUPANSI 0,1% - 40%")
-      ||(nilai == "AKUPANSI 41% - 80%")
+    if ((nilai == "AKUPANSI 0% ")
+      ||(nilai == "AKUPANSI 0,1%- 40%")
+      ||(nilai == "AKUPANSI 41%- 80%")
       ||(nilai == "DIATAS 80%"))
     {
       $.ajax({
@@ -5108,9 +5119,9 @@ function createMarker_UBN(nama_kelas,nilai){
 
 function createMarker_KLM(nama_kelas,nilai){
   if(nama_kelas.className == "fa fa-circle-o"){
-    if ((nilai == "AKUPANSI 0%")
-      ||(nilai == "AKUPANSI 0,1% - 40%")
-      ||(nilai == "AKUPANSI 41% - 80%")
+    if ((nilai == "AKUPANSI 0% ")
+      ||(nilai == "AKUPANSI 0,1%- 40%")
+      ||(nilai == "AKUPANSI 41%- 80%")
       ||(nilai == "DIATAS 80%"))
     {
       $.ajax({
@@ -5254,9 +5265,9 @@ function createMarker_KLM(nama_kelas,nilai){
 
 function createMarker_KUT(nama_kelas,nilai){
   if(nama_kelas.className == "fa fa-circle-o"){
-    if ((nilai == "AKUPANSI 0%")
-      ||(nilai == "AKUPANSI 0,1% - 40%")
-      ||(nilai == "AKUPANSI 41% - 80%")
+    if ((nilai == "AKUPANSI 0% ")
+      ||(nilai == "AKUPANSI 0,1%- 40%")
+      ||(nilai == "AKUPANSI 41%- 80%")
       ||(nilai == "DIATAS 80%"))
     {
       $.ajax({
@@ -5400,9 +5411,9 @@ function createMarker_KUT(nama_kelas,nilai){
 
 function createMarker_MMN(nama_kelas,nilai){
   if(nama_kelas.className == "fa fa-circle-o"){
-    if ((nilai == "AKUPANSI 0%")
-      ||(nilai == "AKUPANSI 0,1% - 40%")
-      ||(nilai == "AKUPANSI 41% - 80%")
+    if ((nilai == "AKUPANSI 0% ")
+      ||(nilai == "AKUPANSI 0,1%- 40%")
+      ||(nilai == "AKUPANSI 41%- 80%")
       ||(nilai == "DIATAS 80%"))
     {
       $.ajax({
@@ -5546,9 +5557,9 @@ function createMarker_MMN(nama_kelas,nilai){
 
 function createMarker_NSD(nama_kelas,nilai){
   if(nama_kelas.className == "fa fa-circle-o"){
-    if ((nilai == "AKUPANSI 0%")
-      ||(nilai == "AKUPANSI 0,1% - 40%")
-      ||(nilai == "AKUPANSI 41% - 80%")
+    if ((nilai == "AKUPANSI 0% ")
+      ||(nilai == "AKUPANSI 0,1%- 40%")
+      ||(nilai == "AKUPANSI 41%- 80%")
       ||(nilai == "DIATAS 80%"))
     {
       $.ajax({
@@ -5692,9 +5703,9 @@ function createMarker_NSD(nama_kelas,nilai){
 
 function createMarker_SWI(nama_kelas,nilai){
   if(nama_kelas.className == "fa fa-circle-o"){
-    if ((nilai == "AKUPANSI 0%")
-      ||(nilai == "AKUPANSI 0,1% - 40%")
-      ||(nilai == "AKUPANSI 41% - 80%")
+    if ((nilai == "AKUPANSI 0% ")
+      ||(nilai == "AKUPANSI 0,1%- 40%")
+      ||(nilai == "AKUPANSI 41%- 80%")
       ||(nilai == "DIATAS 80%"))
     {
       $.ajax({
@@ -5838,9 +5849,9 @@ function createMarker_SWI(nama_kelas,nilai){
 
 function createMarker_TOP(nama_kelas,nilai){
   if(nama_kelas.className == "fa fa-circle-o"){
-    if ((nilai == "AKUPANSI 0%")
-      ||(nilai == "AKUPANSI 0,1% - 40%")
-      ||(nilai == "AKUPANSI 41% - 80%")
+    if ((nilai == "AKUPANSI 0% ")
+      ||(nilai == "AKUPANSI 0,1%- 40%")
+      ||(nilai == "AKUPANSI 41%- 80%")
       ||(nilai == "DIATAS 80%"))
     {
       $.ajax({
@@ -6054,9 +6065,9 @@ function setContent(data,n){
     '</div>';
     return content_status;
   }
-  else if((n == "AKUPANSI 0%")
-    ||(n == "AKUPANSI 0,1% - 40%")
-    ||(n == "AKUPANSI 41% - 80%")
+  else if((n == "AKUPANSI 0% ")
+    ||(n == "AKUPANSI 0,1%- 40%")
+    ||(n == "AKUPANSI 41%- 80%")
     ||(n == "DIATAS 80%"))
   {
     var content_akupansi =
@@ -6065,7 +6076,7 @@ function setContent(data,n){
         '<div class="form-group">'+
           '<label class="control-label pull-left" style="margin-left: 15px">Tanggal Update</label>'+
           '<div style="margin-left: 150px">'+
-              '<input id="UPDATE_DATE" style="width: 100px;" value="'+data.UPDATE_DATE+'" name="UPDATE_DATE" class="form-control" type="text" readonly>'+
+              '<input id="UPDATE_DATE" style="width: 150px;" value="'+data.UPDATE_DATE+'" name="UPDATE_DATE" class="form-control" type="text" readonly>'+
               '<span class="help-block"></span>'+
           '</div>'+
         '</div>'+

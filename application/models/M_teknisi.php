@@ -268,7 +268,7 @@ class M_teknisi extends CI_Model
     function upload_sampledataaku_csv() {
         $fp = fopen($_FILES['file3']['tmp_name'],'r');
         if($fp){
-            while($csv_line = fgetcsv($fp,20000,";"))
+            while($csv_line = fgetcsv($fp,20000,","))
                 {
                     for ($i = 0, $j = count($csv_line); $i < $j; $i++)
                     {
@@ -295,6 +295,7 @@ class M_teknisi extends CI_Model
                     $x = $this->db->get('odp_aku');
                     if($x->num_rows() > 0)
                     {
+                        date_default_timezone_set('Asia/Hong_Kong');
                         $data = array(
                             'STO' => $insert_csv['STO'],
                             'PD_NAME' => $insert_csv['PD_NAME'],
@@ -312,7 +313,7 @@ class M_teknisi extends CI_Model
                             'IS_SERVICE' => $insert_csv['IS_SERVICE'],
                             'IS_TOTAL' => $insert_csv['IS_TOTAL'],
                             'KETERANGAN' => $insert_csv['KETERANGAN'],
-                            'UPDATE_DATE' => $insert_csv['UPDATE_DATE']
+                            'UPDATE_DATE' => date('m/d/Y H:i')
                         );
                         $this->db->where('ODP_NAME', $insert_csv['ODP_NAME']);
                         $data['crane_features']=$this->db->update('odp_aku', $data);
