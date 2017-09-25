@@ -5,6 +5,8 @@ class Maps extends CI_Controller {
 	public function __construct() {
         parent::__construct();
         $this->load->model('m_teknisi');
+        $this->load->database();
+        $this->load->helper('url');
     }
 
     public function index(){
@@ -376,23 +378,22 @@ class Maps extends CI_Controller {
         echo json_encode(array("status" => TRUE));
     }
 
-	public function ajax_update_odp_aku()
+		public function ajax_update_odp_aku()
     {
-        date_default_timezone_set('Asia/Hong_Kong');
         $this->_validate_odp_aku();
         $data = array(
-                'UPDATE_DATE' => date('m/d/Y H:i'),
+                'UPDATE_DATE' => $this->input->post('UPDATE_DATE'),
                 'ODP_NAME' => $this->input->post('ODP_NAME'),
                 'PD_NAME' => $this->input->post('PD_NAME'),
                 'QR_CODE_ODP' => $this->input->post('QR_CODE_ODP'),
                 'STATUS_ODP' => $this->input->post('STATUS_ODP'),
                 'IS_AVAIL' => $this->input->post('IS_AVAIL'),
-				'IS_SERVICE' => $this->input->post('IS_SERVICE'),
-				'IS_TOTAL' => $this->input->post('IS_TOTAL'),
-				'KETERANGAN' => $this->input->post('KETERANGAN'),
-				'IP_GPON' => $this->input->post('IP_GPON'),
-                'PORT_GPON' => $this->input->post('PORT_GPON'),
-				'TIPE_GPON' => $this->input->post('TIPE_GPON'),
+								'IS_SERVICE' => $this->input->post('IS_SERVICE'),
+								'IS_TOTAL' => $this->input->post('IS_TOTAL'),
+								'KETERANGAN' => $this->input->post('KETERANGAN'),
+								'IP_GPON' => $this->input->post('IP_GPON'),
+								'PORT_GPON' => $this->input->post('PORT_GPON'),
+								'TIPE_GPON' => $this->input->post('TIPE_GPON'),
             );
         $this->m_teknisi->update_odp_aku(array('PD_NAME' => $this->input->post('PD_NAME')), $data);
         echo json_encode(array("status" => TRUE));

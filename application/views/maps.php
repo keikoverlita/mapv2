@@ -787,16 +787,10 @@
                   </li>
                 </ul>
               </li>
-              <li>
+              <li id="download_csv">
                 <a href="<?php echo site_url('Maps/ExportCSVaku') ?>">
                 <i class="fa fa-download"></i>
                 <span>Download File ODP</span>
-                </a>
-              </li>
-              <li>
-                <a onclick="lele()">
-                <i class="fa fa-download"></i>
-                <span>LELE</span>
                 </a>
               </li>
               <li>
@@ -1346,11 +1340,6 @@ var prev_win = false;
 var count;
 var icon;
 
-function lele(){
-  alert('<?php date_default_timezone_set('Asia/Hong_Kong');
-               echo date('Y-m-d H:i:s'); ?>');
-}
-
 $(document).ready(function(){
   var sto1 = '';
   $('#cariSTO_dp').on('change', function(){
@@ -1440,6 +1429,10 @@ $(document).ready(function(){
 $(document).ready(function(){
   if('<?php echo $role ?>' == "Teknisi"){
     $('#act2').remove();
+    $('#download_csv').remove();
+  }
+  else if('<?php echo $role ?>' == "Help Desk"){
+    $('#download_csv').remove();
   }
 });
 
