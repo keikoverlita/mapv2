@@ -205,13 +205,13 @@ function setMapOnAll(map){
 
 function parseCreateMarker_SMY(nilai){
   var nama_kelas;
-  if(nilai == "AKUPANSI 0%"){
+  if(nilai == "AKUPANSI 0% "){
     nama_kelas = document.getElementById("aku_SMY_0");
   }
-  else if(nilai == "AKUPANSI 0,1% - 40%"){
+  else if(nilai == "AKUPANSI 0,1%- 40%"){
     nama_kelas = document.getElementById("aku_SMY_1");
   }
-  else if(nilai == "AKUPANSI 41% - 80%"){
+  else if(nilai == "AKUPANSI 41%- 80%"){
     nama_kelas = document.getElementById("aku_SMY_2");
   }
   else if(nilai == "DIATAS 80%"){
@@ -239,13 +239,13 @@ function parseCreateMarker_SMY(nilai){
 }
 
 function pushMarker_SMY(n,marker){
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     markers_SMY_0.push(marker);
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     markers_SMY_1.push(marker);
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     markers_SMY_2.push(marker);
   }
   else if(n == "DIATAS 80%"){
@@ -273,13 +273,13 @@ function pushMarker_SMY(n,marker){
 }
 
 function setMarker_SMY(n){
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     markers_SMY_0 = [];
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     markers_SMY_1 = [];
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     markers_SMY_2 = [];
   }
   else if(n == "DIATAS 80%"){
@@ -332,17 +332,17 @@ function setMarker_SMY(n){
 }
 
 function setMapOnAll_SMY(map,n) {
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     for (var i = 0; i < markers_SMY_0.length; i++) {
       markers_SMY_0[i].setMap(map);
     }
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     for (var i = 0; i < markers_SMY_1.length; i++) {
       markers_SMY_1[i].setMap(map);
     }
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     for (var i = 0; i < markers_SMY_2.length; i++) {
       markers_SMY_2[i].setMap(map);
     }
@@ -454,13 +454,13 @@ function setMapOnAll_SMY(map,n) {
 
 function parseCreateMarker_SAU(nilai){
   var nama_kelas;
-  if(nilai == "AKUPANSI 0%"){
+  if(nilai == "AKUPANSI 0% "){
     nama_kelas = document.getElementById("aku_SAU_0");
   }
-  else if(nilai == "AKUPANSI 0,1% - 40%"){
+  else if(nilai == "AKUPANSI 0,1%- 40%"){
     nama_kelas = document.getElementById("aku_SAU_1");
   }
-  else if(nilai == "AKUPANSI 41% - 80%"){
+  else if(nilai == "AKUPANSI 41%- 80%"){
     nama_kelas = document.getElementById("aku_SAU_2");
   }
   else if(nilai == "DIATAS 80%"){
@@ -488,13 +488,13 @@ function parseCreateMarker_SAU(nilai){
 }
 
 function pushMarker_SAU(n,marker){
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     markers_SAU_0.push(marker);
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     markers_SAU_1.push(marker);
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     markers_SAU_2.push(marker);
   }
   else if(n == "DIATAS 80%"){
@@ -522,13 +522,13 @@ function pushMarker_SAU(n,marker){
 }
 
 function setMarker_SAU(n){
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     markers_SAU_0 = [];
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     markers_SAU_1 = [];
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     markers_SAU_2 = [];
   }
   else if(n == "DIATAS 80%"){
@@ -581,17 +581,17 @@ function setMarker_SAU(n){
 }
 
 function setMapOnAll_SAU(map,n) {
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     for (var i = 0; i < markers_SAU_0.length; i++) {
       markers_SAU_0[i].setMap(map);
     }
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     for (var i = 0; i < markers_SAU_1.length; i++) {
       markers_SAU_1[i].setMap(map);
     }
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     for (var i = 0; i < markers_SAU_2.length; i++) {
       markers_SAU_2[i].setMap(map);
     }
@@ -703,13 +703,13 @@ function setMapOnAll_SAU(map,n) {
 
 function parseCreateMarker_BNO(nilai){
   var nama_kelas;
-  if(nilai == "AKUPANSI 0%"){
+  if(nilai == "AKUPANSI 0% "){
     nama_kelas = document.getElementById("aku_BNO_0");
   }
-  else if(nilai == "AKUPANSI 0,1% - 40%"){
+  else if(nilai == "AKUPANSI 0,1%- 40%"){
     nama_kelas = document.getElementById("aku_BNO_1");
   }
-  else if(nilai == "AKUPANSI 41% - 80%"){
+  else if(nilai == "AKUPANSI 41%- 80%"){
     nama_kelas = document.getElementById("aku_BNO_2");
   }
   else if(nilai == "DIATAS 80%"){
@@ -737,13 +737,13 @@ function parseCreateMarker_BNO(nilai){
 }
 
 function pushMarker_BNO(n,marker){
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     markers_BNO_0.push(marker);
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     markers_BNO_1.push(marker);
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     markers_BNO_2.push(marker);
   }
   else if(n == "DIATAS 80%"){
@@ -771,13 +771,13 @@ function pushMarker_BNO(n,marker){
 }
 
 function setMarker_BNO(n){
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     markers_BNO_0 = [];
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     markers_BNO_1 = [];
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     markers_BNO_2 = [];
   }
   else if(n == "DIATAS 80%"){
@@ -830,17 +830,17 @@ function setMarker_BNO(n){
 }
 
 function setMapOnAll_BNO(map,n) {
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     for (var i = 0; i < markers_BNO_0.length; i++) {
       markers_BNO_0[i].setMap(map);
     }
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     for (var i = 0; i < markers_BNO_1.length; i++) {
       markers_BNO_1[i].setMap(map);
     }
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     for (var i = 0; i < markers_BNO_2.length; i++) {
       markers_BNO_2[i].setMap(map);
     }
@@ -952,13 +952,13 @@ function setMapOnAll_BNO(map,n) {
 
 function parseCreateMarker_JBR(nilai){
   var nama_kelas;
-  if(nilai == "AKUPANSI 0%"){
+  if(nilai == "AKUPANSI 0% "){
     nama_kelas = document.getElementById("aku_JBR_0");
   }
-  else if(nilai == "AKUPANSI 0,1% - 40%"){
+  else if(nilai == "AKUPANSI 0,1%- 40%"){
     nama_kelas = document.getElementById("aku_JBR_1");
   }
-  else if(nilai == "AKUPANSI 41% - 80%"){
+  else if(nilai == "AKUPANSI 41%- 80%"){
     nama_kelas = document.getElementById("aku_JBR_2");
   }
   else if(nilai == "DIATAS 80%"){
@@ -986,13 +986,13 @@ function parseCreateMarker_JBR(nilai){
 }
 
 function pushMarker_JBR(n,marker){
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     markers_JBR_0.push(marker);
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     markers_JBR_1.push(marker);
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     markers_JBR_2.push(marker);
   }
   else if(n == "DIATAS 80%"){
@@ -1020,13 +1020,13 @@ function pushMarker_JBR(n,marker){
 }
 
 function setMarker_JBR(n){
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     markers_JBR_0 = [];
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     markers_JBR_1 = [];
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     markers_JBR_2 = [];
   }
   else if(n == "DIATAS 80%"){
@@ -1079,17 +1079,17 @@ function setMarker_JBR(n){
 }
 
 function setMapOnAll_JBR(map,n) {
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     for (var i = 0; i < markers_JBR_0.length; i++) {
       markers_JBR_0[i].setMap(map);
     }
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     for (var i = 0; i < markers_JBR_1.length; i++) {
       markers_JBR_1[i].setMap(map);
     }
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     for (var i = 0; i < markers_JBR_2.length; i++) {
       markers_JBR_2[i].setMap(map);
     }
@@ -1201,13 +1201,13 @@ function setMapOnAll_JBR(map,n) {
 
 function parseCreateMarker_KLM(nilai){
   var nama_kelas;
-  if(nilai == "AKUPANSI 0%"){
+  if(nilai == "AKUPANSI 0% "){
     nama_kelas = document.getElementById("aku_KLM_0");
   }
-  else if(nilai == "AKUPANSI 0,1% - 40%"){
+  else if(nilai == "AKUPANSI 0,1%- 40%"){
     nama_kelas = document.getElementById("aku_KLM_1");
   }
-  else if(nilai == "AKUPANSI 41% - 80%"){
+  else if(nilai == "AKUPANSI 41%- 80%"){
     nama_kelas = document.getElementById("aku_KLM_2");
   }
   else if(nilai == "DIATAS 80%"){
@@ -1235,13 +1235,13 @@ function parseCreateMarker_KLM(nilai){
 }
 
 function pushMarker_KLM(n,marker){
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     markers_KLM_0.push(marker);
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     markers_KLM_1.push(marker);
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     markers_KLM_2.push(marker);
   }
   else if(n == "DIATAS 80%"){
@@ -1269,13 +1269,13 @@ function pushMarker_KLM(n,marker){
 }
 
 function setMarker_KLM(n){
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     markers_KLM_0 = [];
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     markers_KLM_1 = [];
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     markers_KLM_2 = [];
   }
   else if(n == "DIATAS 80%"){
@@ -1328,17 +1328,17 @@ function setMarker_KLM(n){
 }
 
 function setMapOnAll_KLM(map,n) {
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     for (var i = 0; i < markers_KLM_0.length; i++) {
       markers_KLM_0[i].setMap(map);
     }
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     for (var i = 0; i < markers_KLM_1.length; i++) {
       markers_KLM_1[i].setMap(map);
     }
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     for (var i = 0; i < markers_KLM_2.length; i++) {
       markers_KLM_2[i].setMap(map);
     }
@@ -1450,13 +1450,13 @@ function setMapOnAll_KLM(map,n) {
 
 function parseCreateMarker_KUT(nilai){
   var nama_kelas;
-  if(nilai == "AKUPANSI 0%"){
+  if(nilai == "AKUPANSI 0% "){
     nama_kelas = document.getElementById("aku_KUT_0");
   }
-  else if(nilai == "AKUPANSI 0,1% - 40%"){
+  else if(nilai == "AKUPANSI 0,1%- 40%"){
     nama_kelas = document.getElementById("aku_KUT_1");
   }
-  else if(nilai == "AKUPANSI 41% - 80%"){
+  else if(nilai == "AKUPANSI 41%- 80%"){
     nama_kelas = document.getElementById("aku_KUT_2");
   }
   else if(nilai == "DIATAS 80%"){
@@ -1484,13 +1484,13 @@ function parseCreateMarker_KUT(nilai){
 }
 
 function pushMarker_KUT(n,marker){
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     markers_KUT_0.push(marker);
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     markers_KUT_1.push(marker);
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     markers_KUT_2.push(marker);
   }
   else if(n == "DIATAS 80%"){
@@ -1518,13 +1518,13 @@ function pushMarker_KUT(n,marker){
 }
 
 function setMarker_KUT(n){
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     markers_KUT_0 = [];
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     markers_KUT_1 = [];
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     markers_KUT_2 = [];
   }
   else if(n == "DIATAS 80%"){
@@ -1577,17 +1577,17 @@ function setMarker_KUT(n){
 }
 
 function setMapOnAll_KUT(map,n) {
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     for (var i = 0; i < markers_KUT_0.length; i++) {
       markers_KUT_0[i].setMap(map);
     }
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     for (var i = 0; i < markers_KUT_1.length; i++) {
       markers_KUT_1[i].setMap(map);
     }
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     for (var i = 0; i < markers_KUT_2.length; i++) {
       markers_KUT_2[i].setMap(map);
     }
@@ -1699,13 +1699,13 @@ function setMapOnAll_KUT(map,n) {
 
 function parseCreateMarker_MMN(nilai){
   var nama_kelas;
-  if(nilai == "AKUPANSI 0%"){
+  if(nilai == "AKUPANSI 0% "){
     nama_kelas = document.getElementById("aku_MMN_0");
   }
-  else if(nilai == "AKUPANSI 0,1% - 40%"){
+  else if(nilai == "AKUPANSI 0,1%- 40%"){
     nama_kelas = document.getElementById("aku_MMN_1");
   }
-  else if(nilai == "AKUPANSI 41% - 80%"){
+  else if(nilai == "AKUPANSI 41%- 80%"){
     nama_kelas = document.getElementById("aku_MMN_2");
   }
   else if(nilai == "DIATAS 80%"){
@@ -1733,13 +1733,13 @@ function parseCreateMarker_MMN(nilai){
 }
 
 function pushMarker_MMN(n,marker){
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     markers_MMN_0.push(marker);
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     markers_MMN_1.push(marker);
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     markers_MMN_2.push(marker);
   }
   else if(n == "DIATAS 80%"){
@@ -1767,13 +1767,13 @@ function pushMarker_MMN(n,marker){
 }
 
 function setMarker_MMN(n){
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     markers_MMN_0 = [];
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     markers_MMN_1 = [];
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     markers_MMN_2 = [];
   }
   else if(n == "DIATAS 80%"){
@@ -1826,17 +1826,17 @@ function setMarker_MMN(n){
 }
 
 function setMapOnAll_MMN(map,n) {
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     for (var i = 0; i < markers_MMN_0.length; i++) {
       markers_MMN_0[i].setMap(map);
     }
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     for (var i = 0; i < markers_MMN_1.length; i++) {
       markers_MMN_1[i].setMap(map);
     }
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     for (var i = 0; i < markers_MMN_2.length; i++) {
       markers_MMN_2[i].setMap(map);
     }
@@ -1948,13 +1948,13 @@ function setMapOnAll_MMN(map,n) {
 
 function parseCreateMarker_NSD(nilai){
   var nama_kelas;
-  if(nilai == "AKUPANSI 0%"){
+  if(nilai == "AKUPANSI 0% "){
     nama_kelas = document.getElementById("aku_NSD_0");
   }
-  else if(nilai == "AKUPANSI 0,1% - 40%"){
+  else if(nilai == "AKUPANSI 0,1%- 40%"){
     nama_kelas = document.getElementById("aku_NSD_1");
   }
-  else if(nilai == "AKUPANSI 41% - 80%"){
+  else if(nilai == "AKUPANSI 41%- 80%"){
     nama_kelas = document.getElementById("aku_NSD_2");
   }
   else if(nilai == "DIATAS 80%"){
@@ -1982,13 +1982,13 @@ function parseCreateMarker_NSD(nilai){
 }
 
 function pushMarker_NSD(n,marker){
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     markers_NSD_0.push(marker);
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     markers_NSD_1.push(marker);
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     markers_NSD_2.push(marker);
   }
   else if(n == "DIATAS 80%"){
@@ -2016,13 +2016,13 @@ function pushMarker_NSD(n,marker){
 }
 
 function setMarker_NSD(n){
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     markers_NSD_0 = [];
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     markers_NSD_1 = [];
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     markers_NSD_2 = [];
   }
   else if(n == "DIATAS 80%"){
@@ -2075,17 +2075,17 @@ function setMarker_NSD(n){
 }
 
 function setMapOnAll_NSD(map,n) {
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     for (var i = 0; i < markers_NSD_0.length; i++) {
       markers_NSD_0[i].setMap(map);
     }
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     for (var i = 0; i < markers_NSD_1.length; i++) {
       markers_NSD_1[i].setMap(map);
     }
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     for (var i = 0; i < markers_NSD_2.length; i++) {
       markers_NSD_2[i].setMap(map);
     }
@@ -2197,13 +2197,13 @@ function setMapOnAll_NSD(map,n) {
 
 function parseCreateMarker_SWI(nilai){
   var nama_kelas;
-  if(nilai == "AKUPANSI 0%"){
+  if(nilai == "AKUPANSI 0% "){
     nama_kelas = document.getElementById("aku_SWI_0");
   }
-  else if(nilai == "AKUPANSI 0,1% - 40%"){
+  else if(nilai == "AKUPANSI 0,1%- 40%"){
     nama_kelas = document.getElementById("aku_SWI_1");
   }
-  else if(nilai == "AKUPANSI 41% - 80%"){
+  else if(nilai == "AKUPANSI 41%- 80%"){
     nama_kelas = document.getElementById("aku_SWI_2");
   }
   else if(nilai == "DIATAS 80%"){
@@ -2231,13 +2231,13 @@ function parseCreateMarker_SWI(nilai){
 }
 
 function pushMarker_SWI(n,marker){
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     markers_SWI_0.push(marker);
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     markers_SWI_1.push(marker);
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     markers_SWI_2.push(marker);
   }
   else if(n == "DIATAS 80%"){
@@ -2265,13 +2265,13 @@ function pushMarker_SWI(n,marker){
 }
 
 function setMarker_SWI(n){
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     markers_SWI_0 = [];
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     markers_SWI_1 = [];
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     markers_SWI_2 = [];
   }
   else if(n == "DIATAS 80%"){
@@ -2324,17 +2324,17 @@ function setMarker_SWI(n){
 }
 
 function setMapOnAll_SWI(map,n) {
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     for (var i = 0; i < markers_SWI_0.length; i++) {
       markers_SWI_0[i].setMap(map);
     }
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     for (var i = 0; i < markers_SWI_1.length; i++) {
       markers_SWI_1[i].setMap(map);
     }
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     for (var i = 0; i < markers_SWI_2.length; i++) {
       markers_SWI_2[i].setMap(map);
     }
@@ -2446,13 +2446,13 @@ function setMapOnAll_SWI(map,n) {
 
 function parseCreateMarker_TOP(nilai){
   var nama_kelas;
-  if(nilai == "AKUPANSI 0%"){
+  if(nilai == "AKUPANSI 0% "){
     nama_kelas = document.getElementById("aku_TOP_0");
   }
-  else if(nilai == "AKUPANSI 0,1% - 40%"){
+  else if(nilai == "AKUPANSI 0,1%- 40%"){
     nama_kelas = document.getElementById("aku_TOP_1");
   }
-  else if(nilai == "AKUPANSI 41% - 80%"){
+  else if(nilai == "AKUPANSI 41%- 80%"){
     nama_kelas = document.getElementById("aku_TOP_2");
   }
   else if(nilai == "DIATAS 80%"){
@@ -2480,13 +2480,13 @@ function parseCreateMarker_TOP(nilai){
 }
 
 function pushMarker_TOP(n,marker){
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     markers_TOP_0.push(marker);
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     markers_TOP_1.push(marker);
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     markers_TOP_2.push(marker);
   }
   else if(n == "DIATAS 80%"){
@@ -2514,13 +2514,13 @@ function pushMarker_TOP(n,marker){
 }
 
 function setMarker_TOP(n){
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     markers_TOP_0 = [];
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     markers_TOP_1 = [];
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     markers_TOP_2 = [];
   }
   else if(n == "DIATAS 80%"){
@@ -2573,17 +2573,17 @@ function setMarker_TOP(n){
 }
 
 function setMapOnAll_TOP(map,n) {
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     for (var i = 0; i < markers_TOP_0.length; i++) {
       markers_TOP_0[i].setMap(map);
     }
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     for (var i = 0; i < markers_TOP_1.length; i++) {
       markers_TOP_1[i].setMap(map);
     }
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     for (var i = 0; i < markers_TOP_2.length; i++) {
       markers_TOP_2[i].setMap(map);
     }
@@ -2695,13 +2695,13 @@ function setMapOnAll_TOP(map,n) {
 
 function parseCreateMarker_UBN(nilai){
   var nama_kelas;
-  if(nilai == "AKUPANSI 0%"){
+  if(nilai == "AKUPANSI 0% "){
     nama_kelas = document.getElementById("aku_UBN_0");
   }
-  else if(nilai == "AKUPANSI 0,1% - 40%"){
+  else if(nilai == "AKUPANSI 0,1%- 40%"){
     nama_kelas = document.getElementById("aku_UBN_1");
   }
-  else if(nilai == "AKUPANSI 41% - 80%"){
+  else if(nilai == "AKUPANSI 41%- 80%"){
     nama_kelas = document.getElementById("aku_UBN_2");
   }
   else if(nilai == "DIATAS 80%"){
@@ -2729,13 +2729,13 @@ function parseCreateMarker_UBN(nilai){
 }
 
 function pushMarker_UBN(n,marker){
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     markers_UBN_0.push(marker);
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     markers_UBN_1.push(marker);
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     markers_UBN_2.push(marker);
   }
   else if(n == "DIATAS 80%"){
@@ -2763,13 +2763,13 @@ function pushMarker_UBN(n,marker){
 }
 
 function setMarker_UBN(n){
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     markers_UBN_0 = [];
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     markers_UBN_1 = [];
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     markers_UBN_2 = [];
   }
   else if(n == "DIATAS 80%"){
@@ -2822,17 +2822,17 @@ function setMarker_UBN(n){
 }
 
 function setMapOnAll_UBN(map,n) {
-  if(n == "AKUPANSI 0%"){
+  if(n == "AKUPANSI 0% "){
     for (var i = 0; i < markers_UBN_0.length; i++) {
       markers_UBN_0[i].setMap(map);
     }
   }
-  else if(n == "AKUPANSI 0,1% - 40%"){
+  else if(n == "AKUPANSI 0,1%- 40%"){
     for (var i = 0; i < markers_UBN_1.length; i++) {
       markers_UBN_1[i].setMap(map);
     }
   }
-  else if(n == "AKUPANSI 41% - 80%"){
+  else if(n == "AKUPANSI 41%- 80%"){
     for (var i = 0; i < markers_UBN_2.length; i++) {
       markers_UBN_2[i].setMap(map);
     }

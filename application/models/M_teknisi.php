@@ -313,7 +313,11 @@ class M_teknisi extends CI_Model
                             'IS_SERVICE' => $insert_csv['IS_SERVICE'],
                             'IS_TOTAL' => $insert_csv['IS_TOTAL'],
                             'KETERANGAN' => $insert_csv['KETERANGAN'],
+<<<<<<< HEAD
                             'UPDATE_DATE' => date('m-d-Y H:i')
+=======
+                            'UPDATE_DATE' => date('m/d/Y H:i')
+>>>>>>> 037a1793036ce409e79641ea7324a3e8fa8f66bc
                         );
                         $this->db->where('ODP_NAME', $insert_csv['ODP_NAME']);
                         $data['crane_features']=$this->db->update('odp_aku', $data);
