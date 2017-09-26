@@ -26,6 +26,11 @@ input[type="file"] {
   padding-left: 0; 
 }
 
+#map {
+  height: 100%;
+  width: 100%;
+}
+
 input[type="submit"] {
   width: auto; 
 }
@@ -84,10 +89,6 @@ input[type="submit"] {
 }
 #latlng {
   width: 225px;
-}
-
-#map {
-  height: 100%;
 }
 
 .inline-block{
