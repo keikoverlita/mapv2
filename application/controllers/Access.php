@@ -2,7 +2,7 @@
 
 if ( ! defined('BASEPATH')) exit ('No direct script access allowed');
 
-class Access extends CI_Controller {	
+class Access extends CI_Controller {
 	public function __construct() {
         parent::__construct();
         $this->load->model('m_access');
@@ -62,5 +62,9 @@ class Access extends CI_Controller {
 		);
 		$this->session->set_userdata($data);
 		redirect('Access/index');
+	}
+	public function get_row(){
+		$this->db->select_sum('login_count');
+		echo json_encode($this->db->get('user')->result());
 	}
 }
