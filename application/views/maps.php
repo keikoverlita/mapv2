@@ -819,14 +819,16 @@
                 <a href="#">
                 <span id="hit_count_content">Hit Count : </span>
                 </a>
-              </li><!--
+              </li>
+              <!--
               <li>
                 <a href="#" onclick="get_curl()">
                 <i class="fa fa-chrome"></i>
                 <span>Get Curl</span>
                 <span class="label pull-right bg-blue"></span>
                 </a>
-              </li>-->
+              </li>
+            -->
           </ul>
            </section>
       </aside>
@@ -1374,13 +1376,22 @@ function get_curl(){
     type: 'POST',
     dataType: 'JSON',
     success: function(data){
-      var j = document.getElementById("DivModalCurl");
-      console.log(data);
-      for (var i = 0; i < data.length; i++){
-        j.insertAdjacentHTML('beforeend',tes);
+      $('#DivModalCurl').empty();
+      $('#DivModalCurl').append("Database yang diinput<br>");
+      for (var i = 0; i < data['insert'].length; i++){
+        $('#DivModalCurl').append(data['insert'][i]['Nama']+"<br>");
+      }
+      $('#ModalCurl').modal('show');
+
+      $('#DivModalCurl').append("<br>Database yang diupdate<br>");
+      for (var i = 0; i < data['update'].length; i++){
+        $('#DivModalCurl').append(data['update'][i]['Nama']+"<br>");
       }
       $('#ModalCurl').modal('show');
     },
+    error:function(){
+      alert('lele');
+    }
   });
 }
 

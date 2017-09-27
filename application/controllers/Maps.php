@@ -50,48 +50,82 @@ class Maps extends CI_Controller {
         echo json_encode(array("status" => TRUE));
     }
 
+		function getUrl($url, $method='', $vars='') {
+	      $ch = curl_init();
+	      if ($method == 'post') {
+	          curl_setopt($ch, CURLOPT_POST, 1);
+	          curl_setopt($ch, CURLOPT_POSTFIELDS, $vars);
+	      }
+	      curl_setopt($ch, CURLOPT_URL, $url);
+	      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	      curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+	      curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookies.txt');
+	      curl_setopt($ch, CURLOPT_COOKIEFILE, 'cookies.txt');
+	      $buffer = curl_exec($ch);
+	      curl_close($ch);
+	      return $buffer;
+	  }
     function get_curl(){
+			$loginUrl = 'http://192.168.1.5/mapv2/Access/index'; //action from the login form
+			  $loginFields = array('username'=>'lele', 'password'=>'lele'); //login form field names and values
 
-        $htmlContent = file_get_contents("http://192.168.1.6/lelele/index.html");
-        
-        $DOM = new DOMDocument();
-        $DOM->loadHTML($htmlContent);
-        
-        $Header = $DOM->getElementsByTagName('th');
-        $Detail = $DOM->getElementsByTagName('td');
+			  $login = $this->getUrl($loginUrl, 'post', $loginFields); //login to the site
 
-        //#Get header name of the table
-        foreach($Header as $NodeHeader) 
-        {
-            $aDataTableHeaderHTML[] = trim($NodeHeader->textContent);
-        }
-        //print_r($aDataTableHeaderHTML); die();
+			  $DOM = new DOMDocument();
+			  $DOM->loadHTML($login);
 
-        //#Get row data/detail table without header name as key
-        $i = 0;
-        $j = 0;
-        foreach($Detail as $sNodeDetail) 
-        {
-            $aDataTableDetailHTML[$j][] = trim($sNodeDetail->textContent);
-            $i = $i + 1;
-            $j = $i % count($aDataTableHeaderHTML) == 0 ? $j + 1 : $j;
-        }
-        //print_r($aDataTableDetailHTML); die();
-        
-        //#Get row data/detail table with header name as key and outer array index as row number
-        for($i = 0; $i < count($aDataTableDetailHTML); $i++)
-        {
-            for($j = 0; $j < count($aDataTableHeaderHTML); $j++)
-            {
-                $aTempData[$i][$aDataTableHeaderHTML[$j]] = $aDataTableDetailHTML[$i][$j];
-            }
-        }
-        $aDataTableDetailHTML = $aTempData; unset($aTempData);
+			  $Header = $DOM->getElementsByTagName('th');
+			  $Detail = $DOM->getElementsByTagName('td');
+			    //#Get header name of the table
+			  foreach($Header as $NodeHeader)
+			  {
+			    $aDataTableHeaderHTML[] = trim($NodeHeader->textContent);
+			  }
+			  //print_r($aDataTableHeaderHTML); die();
+
+			  //#Get row data/detail table without header name as key
+			  $i = 0;
+			  $j = 0;
+			  foreach($Detail as $sNodeDetail)
+			  {
+			    $aDataTableDetailHTML[$j][] = trim($sNodeDetail->textContent);
+			    $i = $i + 1;
+			    $j = $i % count($aDataTableHeaderHTML) == 0 ? $j + 1 : $j;
+			  }
+			  //print_r($aDataTableDetailHTML); die();
+
+			  //#Get row data/detail table with header name as key and outer array index as row number
+			  for($i = 0; $i < count($aDataTableDetailHTML); $i++)
+			  {
+			    for($j = 0; $j < count($aDataTableHeaderHTML); $j++)
+			    {
+			      $aTempData[$i][$aDataTableHeaderHTML[$j]] = $aDataTableDetailHTML[$i][$j];
+			    }
+			  }
+			  $aDataTableDetailHTML = $aTempData; unset($aTempData);
+
         $tes = array();
+				$tes1 = array();
+				$row = array();
         foreach ($aDataTableDetailHTML as $key) {
-            array_push($tes, $key["Nama"]);
+					$this->db->where('Nama',$key["Nama"]);
+					$this->db->get('curl');
+					$panjang = $this->db->affected_rows();
+					$row=[
+						"No"=>$key["No"],
+						"Nama"=>$key["Nama"],
+						"Rule"=>$key["Rule"]
+					];
+					$this->db->affected_rows();
+					if($panjang>0) array_push($tes1, $row);
+					else array_push($tes, $row);
         }
-        echo json_encode($tes);
+				if($tes1) $this->db->update_batch('curl', $tes1,'Nama');
+				if($tes) $this->db->insert_batch('curl', $tes);
+				$lele = array();
+				$lele['update'] = $tes1;
+				$lele['insert'] = $tes;
+        echo json_encode($lele);
     }
 
     private function _validate_cust()
