@@ -814,6 +814,11 @@
                 <span class="label pull-right bg-blue"></span>
                 </a>
               </li>
+              <li id="hit_count">
+                <a href="#">
+                <span id="hit_count_content">Hit Count : </span>
+                </a>
+              </li>
           </ul>
            </section>
       </aside>
@@ -1341,6 +1346,16 @@ var count;
 var icon;
 
 $(document).ready(function(){
+  $.ajax({
+    url: '<?php echo site_url('Access/get_row') ?>',
+    type: 'POST',
+    dataType: 'JSON',
+    success:function(data){
+      console.log(data);
+      $('#hit_count_content').html("Hit Count : "+data[0].login_count);
+    },
+
+  });
   var sto1 = '';
   $('#cariSTO_dp').on('change', function(){
     sto1 = $(this).val();
