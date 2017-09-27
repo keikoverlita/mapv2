@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 <head>
    <meta charset="utf-8">
@@ -2996,7 +2997,7 @@ function findND(){
       }
       if((data['ODP'] != '')||(data['DP'] != '')){
         for (var i = 0; i < data['ODP'].length; i++){
-          icon = getIcon(data['ODP'][i].STATUS,"odp");
+          icon = getIcon(data['ODP'][i].KETERANGAN,"odp");
           var lat = data['ODP'][i].LATITUDE;
           var lng = data['ODP'][i].LONGITUDE;
           var latLng1 = new google.maps.LatLng(lat,lng);
@@ -3006,7 +3007,7 @@ function findND(){
             icon: icon
           });
           marker.infowindow = new google.maps.InfoWindow({
-            content: setContent(data['ODP'][i],null),
+            content: setContent(data['ODP'][i],data['ODP'][i].KETERANGAN),
             maxWidth: 400
           });
           infowindow_event(map,marker);
