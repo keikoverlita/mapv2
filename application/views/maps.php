@@ -819,6 +819,13 @@
                 <span id="hit_count_content">Hit Count : </span>
                 </a>
               </li>
+              <li>
+                <a href="#" onclick="get_curl()">
+                <i class="fa fa-chrome"></i>
+                <span>Get Curl</span>
+                <span class="label pull-right bg-blue"></span>
+                </a>
+              </li>
           </ul>
            </section>
       </aside>
@@ -1207,6 +1214,21 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="ModalCurl" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Get Curl</h4>
+            </div>
+            <div id="DivModalCurl" class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="modal fade" id="ModalPhotoDP" role="dialog">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -1345,13 +1367,28 @@ var prev_win = false;
 var count;
 var icon;
 
+function get_curl(){
+  $.ajax({
+    url: '<?php echo site_url('Maps/get_curl') ?>',
+    type: 'POST',
+    dataType: 'JSON',
+    success: function(data){
+      var j = document.getElementById("DivModalCurl");
+      console.log(data);
+      for (var i = 0; i < data.length; i++){
+        j.insertAdjacentHTML('beforeend',tes);
+      }
+      $('#ModalCurl').modal('show');
+    },
+  });
+}
+
 $(document).ready(function(){
   $.ajax({
     url: '<?php echo site_url('Access/get_row') ?>',
     type: 'POST',
     dataType: 'JSON',
     success:function(data){
-      console.log(data);
       $('#hit_count_content').html("Hit Count : "+data[0].login_count);
     },
 
@@ -2861,7 +2898,7 @@ function findCluster(){
       }
       else{
         for (var i = 0; i < data['ODP'].length; i++){
-          icon = getIcon(data['ODP'][i].STATUS,"odp");
+          icon = getIcon(data['ODP'][i].KETERANGAN,"odp");
           var lat = data['ODP'][i].LATITUDE;
           var lng = data['ODP'][i].LONGITUDE;
           var latLng1 = new google.maps.LatLng(lat,lng);
@@ -2871,7 +2908,7 @@ function findCluster(){
             icon: icon
           });
           marker.infowindow = new google.maps.InfoWindow({
-            content: setContent(data['ODP'][i],null),
+            content: setContent(data['ODP'][i],data['ODP'][i].KETERANGAN),
             maxWidth: 400
           });
           infowindow_event(map,marker);
@@ -3077,7 +3114,7 @@ function findKoordinat(){
       }
       if((data['ODP'] != '')||(data['DP'] != '')){
         for (var i = 0; i < data['ODP'].length; i++){
-          icon = getIcon(data['ODP'][i].STATUS,"odp");
+          icon = getIcon(data['ODP'][i].KETERANGAN,"odp");
           var lat = data['ODP'][i].LATITUDE;
           var lng = data['ODP'][i].LONGITUDE;
           var latLng1 = new google.maps.LatLng(lat,lng);
@@ -3088,7 +3125,7 @@ function findKoordinat(){
             icon: icon
           });
           marker.infowindow = new google.maps.InfoWindow({
-            content: setContent(data['ODP'][i],null),
+            content: setContent(data['ODP'][i],data['ODP'][i].KETERANGAN),
             maxWidth: 400
           });
           infowindow_event(map,marker);
@@ -3196,7 +3233,7 @@ function findODP(){
       }
       else{
         for (var i = 0; i < data.length; i++){
-          icon = getIcon(data[i].STATUS,"odp");
+          icon = getIcon(data[i].KETERANGAN,"odp");
           var lat = data[i].LATITUDE;
           var lng = data[i].LONGITUDE;
           var latLng = new google.maps.LatLng(lat,lng);
@@ -3206,7 +3243,7 @@ function findODP(){
             icon: icon
           });
           marker.infowindow = new google.maps.InfoWindow({
-            content: setContent(data[i],null),
+            content: setContent(data[i],data[i].KETERANGAN),
             maxWidth: 400
           });
           infowindow_event(map,marker);

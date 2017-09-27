@@ -459,7 +459,7 @@ class M_teknisi extends CI_Model
                 $lon2 = $row->LONGITUDE;
             }
         }
-        $this->db->from("odp_stat");
+        $this->db->from("odp_aku");
         $query2 = $this->db->get();
         if ($query2->num_rows()>0) {
             foreach ($query2->result() as $row) {
@@ -612,7 +612,7 @@ class M_teknisi extends CI_Model
         $return = array();
         $lat2 = $this->input->get('lat');
         $lon2 = $this->input->get('lng');
-        $this->db->from("odp_stat");
+        $this->db->from("odp_aku");
         $query = $this->db->get();
         if ($query->num_rows()>0) {
             foreach ($query->result() as $row) {
@@ -667,7 +667,7 @@ class M_teknisi extends CI_Model
         $a = $this->input->get('sto');
         $b = $this->input->get('odp');
         $c = 'ODP-'.$a.'-'.$b;
-        $this->db->from("odp_stat");
+        $this->db->from("odp_aku");
         $this->db->where('PD_NAME',$c);
         $this->db->or_where('ODP_NAME',$c);
         $query = $this->db->get();
