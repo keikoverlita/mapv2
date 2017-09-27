@@ -819,14 +819,14 @@
                 <a href="#">
                 <span id="hit_count_content">Hit Count : </span>
                 </a>
-              </li>
+              </li><!--
               <li>
                 <a href="#" onclick="get_curl()">
                 <i class="fa fa-chrome"></i>
                 <span>Get Curl</span>
                 <span class="label pull-right bg-blue"></span>
                 </a>
-              </li>
+              </li>-->
           </ul>
            </section>
       </aside>
