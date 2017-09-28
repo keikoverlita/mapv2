@@ -411,6 +411,12 @@ class M_teknisi extends CI_Model
         return $this->db->get('odc')->result();
     }
 
+    public function cari_sto_clus_polygon(){
+        $this->db->distinct();
+        $this->db->select('STO');
+        return $this->db->get('cluster')->result();
+    }
+
     public function cari_sto_dp(){
         $this->db->distinct();
         $this->db->select('STO');
@@ -444,6 +450,20 @@ class M_teknisi extends CI_Model
         $dist = rad2deg($dist);
         $kilo = $dist * 60 * 1.1515 * 1.609344;
         return $kilo;
+    }
+
+    public function get_koor_odp_clu_polygon(){
+        $return = array();
+        $this->db->from("odp_aku");
+        $this->db->where('STO',$this->input->get('sto'));
+        $query = $this->db->get();
+        $_odp= array();
+        if ($query->num_rows()>0) {
+            foreach ($query->result() as $row) {
+              array_push($_odp,$row);
+            }
+        }
+        return $_odp;
     }
 
     public function get_koor_odp_clu(){
@@ -648,7 +668,7 @@ class M_teknisi extends CI_Model
         $return = array();
         $lat2 = $this->input->get('lat');
         $lon2 = $this->input->get('lng');
-        $this->db->from("odp_stat");
+        $this->db->from("odp_aku");
         $query = $this->db->get();
         if ($query->num_rows()>0) {
             foreach ($query->result() as $row) {
@@ -831,6 +851,27 @@ class M_teknisi extends CI_Model
     {
         $this->db->where('PD_NAME', $this->input->post('odp'));
         $this->db->delete("odp_stat");
+    }
+
+    function get_polygon(){
+      $this->db->where('STO',$this->input->get('sto'));
+      $this->db->where('NAME',$this->input->get('name'));
+      $query = $this->db->get('cluster');
+      $_polygon=array();
+      if ($query->num_rows()>0) {
+        foreach ($query->result() as $row) {
+          array_push($_polygon,$row);
+        }
+      }
+      return $_polygon;
+    }
+
+    function get_polygon_by_sto($values) {
+            $this->db->distinct();
+            $this->db->select('NAME');
+            $this->db->where('STO',$values);
+            $res = $this->db->get('cluster');
+            return $res->result();
     }
 
     function get_odc_by_sto($values) {

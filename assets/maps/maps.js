@@ -11,6 +11,7 @@ function initMap() {
 //================================= Inisiasi Array ODP ====================================//
 
 var markers = [];
+var markers_polygon = [];
 var markersALPRO = [];
 var markersKoordinat = [];
 var markersCluster = [];
@@ -153,6 +154,22 @@ function setMapOnAllKoordinat(map){
   }
 }
 
+//================== JavaScript untuk Maps di Cari Polygon =======================//
+
+function pushMarkerPolygon(marker){
+  markers_polygon.push(marker);
+}
+
+function setMarkerPolygon(){
+  markers_polygon = [];
+}
+
+function setMapOnAllPolygon(map){
+  for(var i = 0; i < markers_polygon.length; i++){
+    markers_polygon[i].setMap(map);
+  }
+}
+
 //================== JavaScript untuk Maps di Cari ND =======================//
 
 function pushMarkerND(marker){
@@ -162,7 +179,6 @@ function pushMarkerND(marker){
 function setMarkerND(){
   markersND = [];
 }
-
 function setMapOnAllND(map){
   for(var i = 0; i < markersND.length; i++){
     markersND[i].setMap(map);
@@ -184,6 +200,7 @@ function setMapOnAllCluster(map){
     markersCluster[i].setMap(map);
   }
 }
+
 
 //================== JavaScript untuk Maps di Cari ODP =======================//
 

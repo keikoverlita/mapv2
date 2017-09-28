@@ -18,6 +18,7 @@ class Maps extends CI_Controller {
             $data['sto_dp'] = $this->m_teknisi->cari_sto_dp();
             $data['sto_odp'] = $this->m_teknisi->cari_sto_odp();
             $data['sto_clus'] = $this->m_teknisi->cari_sto_clus();
+						$data['sto_clus_polygon'] = $this->m_teknisi->cari_sto_clus_polygon();
             $this->load->view('maps', $data);
         }
         else{
@@ -66,16 +67,100 @@ class Maps extends CI_Controller {
 	      return $buffer;
 	  }
     function get_curl(){
-			$loginUrl = 'http://192.168.1.5/mapv2/Access/index'; //action from the login form
-			  $loginFields = array('username'=>'lele', 'password'=>'lele'); //login form field names and values
+				//The username or email address of the account.
+				define('USERNAME', 'admin');
 
-			  $login = $this->getUrl($loginUrl, 'post', $loginFields); //login to the site
+				//The password of the account.
+				define('PASSWORD', 'admin');
+
+				//Set a user agent. This basically tells the server that we are using Chrome ;)
+				define('USER_AGENT', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.2309.372 Safari/537.36');
+
+				//Where our cookie information will be stored (needed for authentication).
+				define('COOKIE_FILE', 'http://192.168.1.6/mapv2/temp/cookie.txt');
+
+				//URL of the login form.
+				define('LOGIN_FORM_URL', 'http://192.168.1.6/bedah/login/');
+
+				//Login action URL. Sometimes, this is the same URL as the login form.
+				define('LOGIN_ACTION_URL', 'http://192.168.1.6/bedah/login/login');
+
+
+				//An associative array that represents the required form fields.
+				//You will need to change the keys / index names to match the name of the form
+				//fields.
+				$postValues = array(
+					'username' => USERNAME,
+					'password' => PASSWORD
+				);
+
+				//Initiate cURL.
+				$curl = curl_init();
+
+				//Set the URL that we want to send our POST request to. In this
+				//case, it's the action URL of the login form.
+				curl_setopt($curl, CURLOPT_URL, LOGIN_ACTION_URL);
+
+				//Tell cURL that we want to carry out a POST request.
+				curl_setopt($curl, CURLOPT_POST, true);
+
+				//Set our post fields / date (from the array above).
+				curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($postValues));
+
+				//We don't want any HTTPS errors.
+				curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+				curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+				//Where our cookie details are saved. This is typically required
+				//for authentication, as the session ID is usually saved in the cookie file.
+				curl_setopt($curl, CURLOPT_COOKIEJAR, COOKIE_FILE);
+
+				//Sets the user agent. Some websites will attempt to block bot user agents.
+				//Hence the reason I gave it a Chrome user agent.
+				curl_setopt($curl, CURLOPT_USERAGENT, USER_AGENT);
+
+				//Tells cURL to return the output once the request has been executed.
+				curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+				//Allows us to set the referer header. In this particular case, we are
+				//fooling the server into thinking that we were referred by the login form.
+				curl_setopt($curl, CURLOPT_REFERER, LOGIN_FORM_URL);
+
+				//Do we want to follow any redirects?
+				curl_setopt($curl, CURLOPT_FOLLOWLOCATION, false);
+
+				//Execute the login request.
+				curl_exec($curl);
+
+				//Check for errors!
+				if(curl_errno($curl)){
+					throw new Exception(curl_error($curl));
+				}
+
+				//We should be logged in by now. Let's attempt to access a password protected page
+				curl_setopt($curl, CURLOPT_URL, 'http://192.168.1.6/bedah/alternatif');
+
+				//Use the same cookie file.
+				curl_setopt($curl, CURLOPT_COOKIEJAR, COOKIE_FILE);
+
+				//Use the same user agent, just in case it is used by the server for session validation.
+				curl_setopt($curl, CURLOPT_USERAGENT, USER_AGENT);
+
+				//We don't want any HTTPS / SSL errors.
+				curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+				curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+				//Execute the GET request and print out the result.
+				$remotePage = curl_exec($curl);
+
+				//var_dump($remotePage);
 
 			  $DOM = new DOMDocument();
-			  $DOM->loadHTML($login);
-
+			  $DOM->loadHTML($remotePage);
 			  $Header = $DOM->getElementsByTagName('th');
 			  $Detail = $DOM->getElementsByTagName('td');
+				//var_dump($Header);
+				// var_dump($Detail);
 			    //#Get header name of the table
 			  foreach($Header as $NodeHeader)
 			  {
@@ -103,25 +188,29 @@ class Maps extends CI_Controller {
 			    }
 			  }
 			  $aDataTableDetailHTML = $aTempData; unset($aTempData);
-
+				// var_dump($aDataTableDetailHTML);
         $tes = array();
 				$tes1 = array();
 				$row = array();
         foreach ($aDataTableDetailHTML as $key) {
-					$this->db->where('Nama',$key["Nama"]);
+					$this->db->where('Nama',$key["Nama Alternatif"]);
 					$this->db->get('curl');
 					$panjang = $this->db->affected_rows();
 					$row=[
 						"No"=>$key["No"],
-						"Nama"=>$key["Nama"],
-						"Rule"=>$key["Rule"]
+						"Nama Alternatif"=>$key["Nama Alternatif"],
+						"Bahan Atap"=>$key["Bahan Atap"],
+						"Bahan Lantai"=>$key["Bahan Lantai"],
+						"Bahan Dinding"=>$key["Bahan Dinding"],
+						"Jenis Penerangan"=>$key["Jenis Penerangan"],
+						"Sumber Air"=>$key["Sumber Air"],
 					];
 					$this->db->affected_rows();
 					if($panjang>0) array_push($tes1, $row);
 					else array_push($tes, $row);
         }
-				if($tes1) $this->db->update_batch('curl', $tes1,'Nama');
-				if($tes) $this->db->insert_batch('curl', $tes);
+				//if($tes1) $this->db->update_batch('curl', $tes1,'Nama');
+				//if($tes) $this->db->insert_batch('curl', $tes);
 				$lele = array();
 				$lele['update'] = $tes1;
 				$lele['insert'] = $tes;
@@ -395,6 +484,13 @@ class Maps extends CI_Controller {
         echo json_encode($data);
     }
 
+		public function ajax_get_clus_polygon(){
+        $data = array();
+        $data['ODP'] = $this->m_teknisi->get_koor_odp_clu_polygon();
+				$data['polygon'] = $this->m_teknisi->get_polygon();				
+        echo json_encode($data);
+    }
+
     public function ajax_get_nd(){
         $data = array();
         $data['ODP'] = $this->m_teknisi->get_nd_odp();
@@ -523,6 +619,20 @@ class Maps extends CI_Controller {
                 $select_odc .='<option value="'.$object->NAME.'">'.$object->NAME.'</option>';
             }
             echo json_encode($select_odc);
+        }
+    }
+
+		public function getPolygon() {
+        $sto = $this->input->post('sto');
+        $query = $this->m_teknisi->get_polygon_by_sto($sto);
+        if($query)
+        {
+            $select_polygon = '';
+            $select_polygon .= '<option value="">Select Cluster</option>';
+            foreach ($query as $object) {
+                $select_polygon .='<option value="'.$object->NAME.'">'.$object->NAME.'</option>';
+            }
+            echo json_encode($select_polygon);
         }
     }
 

@@ -694,7 +694,7 @@
                </ul>
               </li>
               <li>
-                <a href="#" onclick="hapuscariodp(),hapuscaridp(),hapuscariKoordinat(),hapuscariCluster(),hapuscariND()">
+                <a href="#" onclick="hapuscariodp(),hapuscaridp(),hapuscariKoordinat(),hapuscariCluster(),hapuscariND(),hapuscariClusterPolygon()">
                 <i class="fa fa-search"></i>
                 <span>Cari Alpro</span>
                 <span class="label pull-right bg-blue"></span>
@@ -724,7 +724,14 @@
                   <li>
                     <a href="#" onclick="hapuscariCluster(),cariCluster()">
                     <i class="fa fa-map"></i>
-                    <span>By Cluster</span>
+                    <span>By Cluster (ODC)</span>
+                    <span class="label pull-right bg-blue"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" onclick="hapuscariClusterPolygon(),cariClusterPolygon()">
+                    <i class="fa fa-map"></i>
+                    <span>By Cluster (Polygon)</span>
                     <span class="label pull-right bg-blue"></span>
                     </a>
                   </li>
@@ -828,7 +835,7 @@
                 <span class="label pull-right bg-blue"></span>
                 </a>
               </li>
-            -->
+              -->
           </ul>
            </section>
       </aside>
@@ -1192,7 +1199,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Cari Cluster</h4>
+                <h4 class="modal-title">Cari Cluster (ODC)</h4>
             </div>
             <div class="modal-body">
               <select name="cariSTO_clu" id="cariSTO_clu">
@@ -1212,6 +1219,32 @@
             </div>
             <div class="modal-footer">
                 <button disabled type="button" class="btn btn-default bg-green" id="btnCluster" onclick="findCluster()">Submit</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="ModalCariCluster_Polygon" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Cari Cluster (Polygon)</h4>
+            </div>
+            <div class="modal-body">
+              <select name="cariSTO_clu_polygon" id="cariSTO_clu_polygon">
+                <option value="">Select STO</option>
+                <?php foreach($sto_clus_polygon as $obj): ?>
+                    <option value="<?php echo $obj->STO; ?>"><?php echo $obj->STO; ?></option>
+                <?php endforeach; ?>
+              </select>
+              <br></br>
+              <select name="cariClus_polygon" id="cariClus_polygon" disabled>
+                <option value="">Select Cluster</option>
+              </select>
+            </div>
+            <div class="modal-footer">
+                <button disabled type="button" class="btn btn-default bg-green" id="btnCluster_Polygon" onclick="findCluster_Polygon()">Submit</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
@@ -1363,7 +1396,7 @@
   </body>
 </html>
 <script type="text/javascript">
-
+var polygonku=null;
 var save_method; //for save method string
 var table;
 var prev_win = false;
@@ -1379,13 +1412,13 @@ function get_curl(){
       $('#DivModalCurl').empty();
       $('#DivModalCurl').append("Database yang diinput<br>");
       for (var i = 0; i < data['insert'].length; i++){
-        $('#DivModalCurl').append(data['insert'][i]['Nama']+"<br>");
+        $('#DivModalCurl').append(data['insert'][i]['Nama Alternatif']+"<br>");
       }
       $('#ModalCurl').modal('show');
 
       $('#DivModalCurl').append("<br>Database yang diupdate<br>");
       for (var i = 0; i < data['update'].length; i++){
-        $('#DivModalCurl').append(data['update'][i]['Nama']+"<br>");
+        $('#DivModalCurl').append(data['update'][i]['Nama Alternatif']+"<br>");
       }
       $('#ModalCurl').modal('show');
     },
@@ -1488,7 +1521,42 @@ $(document).ready(function(){
       $('#btnCluster').attr('disabled', false);
     }
   });
+  var sto4 = '';
+  $('#cariSTO_clu_polygon').on('change', function(){
+    sto4 = $(this).val();
+    if(sto4 == '')
+    {
+      $('#cariClus_polygon').prop('disabled', true);
+    }
+    else
+    {
+      $('#cariClus_polygon').prop('disabled', false);
+      $.ajax({
+        url:"<?php echo base_url() ?>Maps/getPolygon",
+        type: "POST",
+        data: {'sto' : sto4},
+        dataType: 'json',
+        success: function(data){
+          $('#cariClus_polygon').html(data);
+        },
+        error: function(){
+          alert('Error occur...!!');
+        }
+      });
+    }
+  });
+  $('#cariClus_polygon').on('change', function(){
+    clus = $(this).val();
+    if(clus == ''){
+      $('#btnCluster_Polygon').attr('disabled', true);
+    }
+    else
+    {
+      $('#btnCluster_Polygon').attr('disabled', false);
+    }
+  });
 });
+
 
 $(document).ready(function(){
   if('<?php echo $role ?>' == "Teknisi"){
@@ -1538,6 +1606,10 @@ function cariDP(){
 
 function cariCluster(){
   $('#ModalCariCluster').modal('show');
+}
+
+function cariClusterPolygon(){
+  $('#ModalCariCluster_Polygon').modal('show');
 }
 
 function cariND(){
@@ -1970,6 +2042,14 @@ function hapuscariCluster(){
   setMarkerCluster();
 }
 
+function hapuscariClusterPolygon(){
+  setMapOnAllPolygon(null);
+  setMarkerPolygon();
+  if (polygonku!=null) {
+    polygonku.setMap(null);
+  }
+}
+
 function hapuscariND(){
   setMapOnAllND(null);
   setMarkerND();
@@ -1989,6 +2069,7 @@ function hapuscariodp(){
   setMapOnAll(null);
   setMarker();
 }
+
 
 function closeSMY_aku(nilai){
   setMapOnAll_SMY(null,nilai);
@@ -2859,7 +2940,7 @@ function findALPRO(a,b){
       }
       else{
         for (var i = 0; i < data.length; i++){
-          icon = getIcon(data[i].STATUS,"odp");
+          icon = getIcon(data[i].KETERANGAN,"odp");
           var lat = data[i].LATITUDE;
           var lng = data[i].LONGITUDE;
           var latLng = new google.maps.LatLng(lat,lng);
@@ -2869,7 +2950,7 @@ function findALPRO(a,b){
             icon: icon
           });
           marker.infowindow = new google.maps.InfoWindow({
-            content: setContent(data[i],null),
+            content: setContent(data[i],data[i].KETERANGAN),
             maxWidth: 400
           });
           infowindow_event(map,marker);
@@ -3020,6 +3101,88 @@ function findCluster(){
     {
         alert('Error get data from ajax');
     }
+  });
+}
+
+function findCluster_Polygon(){
+  var b = $('#cariSTO_clu_polygon').val();
+  var a = $('#cariClus_polygon').val();
+  $.ajax({
+    url : "<?php echo site_url('Maps/ajax_get_clus_polygon')?>",
+    type: "GET",
+    data: {
+      sto: b,
+      name: a
+    },
+    dataType: "JSON",
+    success: function(data)
+    {
+      polygonku = createPolygon(data['polygon']);
+      polygonku.setMap(map);
+      var latLng2 = new google.maps.LatLng(data['polygon'][0].LATITUDE,data['polygon'][0].LONGITUDE);
+      map.setCenter(latLng2);
+      map.setZoom(15);
+      $('#ModalCariCluster_Polygon').modal('hide');
+      for (var i = 0; i < data['ODP'].length; i++){
+        icon = getIcon(data['ODP'][i].KETERANGAN,"odp");
+        var lat = data['ODP'][i].LATITUDE;
+        var lng = data['ODP'][i].LONGITUDE;
+        var latLng1 = new google.maps.LatLng(lat,lng);
+        var lele = google.maps.geometry.poly.containsLocation(latLng1, polygonku);
+        if (lele) {
+        var marker = new google.maps.Marker({
+          position: latLng1,
+          map: map,
+          icon: icon
+        });
+        marker.infowindow = new google.maps.InfoWindow({
+          content: setContent(data['ODP'][i],data['ODP'][i].KETERANGAN),
+          maxWidth: 400
+        });
+        infowindow_event(map,marker);
+        pushMarkerPolygon(marker);
+        }
+      }
+      //
+      // if(data['DP'] == ''){
+      //   alert('Tidak ada DP disekitar koordinat');
+      // }
+      // else if(data['ODP'] == ''){
+      //   alert('Tidak ada ODP disekitar koordinat');
+      // }
+      // else if(data['ODC'] == ''){
+      //   alert('Tidak ada ODC disekitar koordinat');
+      // }
+      // else{
+      //
+        $('#ModalCariCluster_Polygon').modal('hide');
+    },
+    error: function (jqXHR, textStatus, errorThrown)
+    {
+        alert('Error get data from ajax');
+    }
+  });
+}
+
+function getpoly(data){
+  var poly = [];
+  for (var i = 0; i < data.length; i++){
+    poly[i]={
+      lat:parseFloat(data[i].LATITUDE),
+      lng:parseFloat(data[i].LONGITUDE)
+    }
+  }
+  return poly;
+}
+function createPolygon(data){
+  var polygon_saya = getpoly(data);
+  return new google.maps.Polygon({
+    paths: polygon_saya,
+    strokeColor: '#FF0000',
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: '#FF0000',
+    fillOpacity: 0.35
   });
 }
 
