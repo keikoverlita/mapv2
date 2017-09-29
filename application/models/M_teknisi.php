@@ -466,6 +466,34 @@ class M_teknisi extends CI_Model
         return $_odp;
     }
 
+    public function get_koor_dp_clu_polygon(){
+        $return = array();
+        $this->db->from("dp");
+        $this->db->where('STO',$this->input->get('sto'));
+        $query = $this->db->get();
+        $_dp= array();
+        if ($query->num_rows()>0) {
+            foreach ($query->result() as $row) {
+              array_push($_dp,$row);
+            }
+        }
+        return $_dp;
+    }
+
+    public function get_koor_odc_clu_polygon(){
+        $return = array();
+        $this->db->from("odc");
+        $this->db->where('STO',$this->input->get('sto'));
+        $query = $this->db->get();
+        $_odc= array();
+        if ($query->num_rows()>0) {
+            foreach ($query->result() as $row) {
+              array_push($_odc,$row);
+            }
+        }
+        return $_odc;
+    }
+
     public function get_koor_odp_clu(){
         $return = array();
         $this->db->from("odc");
@@ -669,6 +697,24 @@ class M_teknisi extends CI_Model
         $lat2 = $this->input->get('lat');
         $lon2 = $this->input->get('lng');
         $this->db->from("odp_aku");
+        $query = $this->db->get();
+        if ($query->num_rows()>0) {
+            foreach ($query->result() as $row) {
+                $lat1 = $row->LATITUDE;
+                $lon1 = $row->LONGITUDE;
+                if($this->distance($lat1, $lon1, $lat2, $lon2) < 0.25){
+                    array_push($return, $row);
+                }
+            }
+        }
+        return $return;
+    }
+
+    public function get_alpro_dp(){
+        $return = array();
+        $lat2 = $this->input->get('lat');
+        $lon2 = $this->input->get('lng');
+        $this->db->from("dp");
         $query = $this->db->get();
         if ($query->num_rows()>0) {
             foreach ($query->result() as $row) {

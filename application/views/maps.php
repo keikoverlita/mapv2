@@ -307,7 +307,7 @@
                 <li>
                   <a href="#" onclick="hapuscariodp(),closeNSD()">
                   <i class="fa fa-feed"></i>
-                  <span>ODP NSD</span>
+                  <span>ODP NDA</span>
                   </a>
                   <ul class="treeview-menu">
                     <li>
@@ -701,42 +701,42 @@
                 </a>
                 <ul class="treeview-menu">
                   <li>
-                    <a href="#" onclick="hapuscariodp(),cariODP()">
+                    <a href="#" onclick="cariODP()">
                     <i class="fa fa-map"></i>
                     <span>By ODP</span>
                     <span class="label pull-right bg-blue"></span>
                     </a>
                   </li>
                   <li>
-                    <a href="#" onclick="hapuscaridp(),cariDP()">
+                    <a href="#" onclick="cariDP()">
                     <i class="fa fa-map"></i>
                     <span>By DP</span>
                     <span class="label pull-right bg-blue"></span>
                     </a>
                   </li>
                   <li>
-                    <a href="#" onclick="hapuscariKoordinat(),cariKoordinat()">
+                    <a href="#" onclick="cariKoordinat()">
                     <i class="fa fa-map"></i>
                     <span>By Koordinat</span>
                     <span class="label pull-right bg-blue"></span>
                     </a>
                   </li>
                   <li>
-                    <a href="#" onclick="hapuscariCluster(),cariCluster()">
+                    <a href="#" onclick="cariCluster()">
                     <i class="fa fa-map"></i>
                     <span>By Cluster (ODC)</span>
                     <span class="label pull-right bg-blue"></span>
                     </a>
                   </li>
                   <li>
-                    <a href="#" onclick="hapuscariClusterPolygon(),cariClusterPolygon()">
+                    <a href="#" onclick="cariClusterPolygon()">
                     <i class="fa fa-map"></i>
                     <span>By Cluster (Polygon)</span>
                     <span class="label pull-right bg-blue"></span>
                     </a>
                   </li>
                   <li>
-                    <a href="#" onclick="hapuscariND(),cariND()">
+                    <a href="#" onclick="cariND()">
                     <i class="fa fa-map"></i>
                     <span>By ND</span>
                     <span class="label pull-right bg-blue"></span>
@@ -1393,10 +1393,16 @@
     <script src="<?php echo base_url()."assets/" ?>plugins/datepicker/bootstrap-datepicker.js"></script>
     <script src="<?php echo base_url()."assets/" ?>plugins/datatables/js/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url()."assets/" ?>plugins/datatables/js/dataTables.bootstrap.min.js"></script>
+
   </body>
 </html>
 <script type="text/javascript">
+
+var toogle=0;
+var infoWindow= true;
+var data_parsing = [];
 var polygonku=null;
+var polygons_ku=[];
 var save_method; //for save method string
 var table;
 var prev_win = false;
@@ -2045,8 +2051,11 @@ function hapuscariCluster(){
 function hapuscariClusterPolygon(){
   setMapOnAllPolygon(null);
   setMarkerPolygon();
-  if (polygonku!=null) {
-    polygonku.setMap(null);
+  if (polygons_ku!=null) {
+    close_polygon();
+    for (var i = 0; i < polygons_ku.length; i++) {
+      polygons_ku[i].setMap(null);
+    }
   }
 }
 
@@ -2965,6 +2974,47 @@ function findALPRO(a,b){
   });
 }
 
+function findALPRO_DP(a,b){
+  $.ajax({
+    url : "<?php echo site_url('Maps/ajax_get_alpro_dp')?>",
+    type: "GET",
+    data: {
+      lat: a,
+      lng: b
+    },
+    dataType: "JSON",
+    success: function(data)
+    {
+      if(data == ''){
+        alert('Tidak ada DP terdekat');
+      }
+      else{
+        for (var i = 0; i < data.length; i++){
+          icon = getIcon(data[i].STATUS,"dp");
+          var lat = data[i].LATITUDE;
+          var lng = data[i].LONGITUDE;
+          var latLng = new google.maps.LatLng(lat,lng);
+          var marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+            icon: icon
+          });
+          marker.infowindow = new google.maps.InfoWindow({
+            content: setContentDP(data[i],null),
+            maxWidth: 400
+          });
+          infowindow_event(map,marker);
+          pushMarker(marker);
+        }
+      }
+    },
+    error: function (jqXHR, textStatus, errorThrown)
+    {
+        alert('Error get data from ajax');
+    }
+  });
+}
+
 function findCluster(){
   var a = $('#cariODC_clu').val();
   var b = $('#cariSTO_clu').val();
@@ -3118,10 +3168,15 @@ function findCluster_Polygon(){
     success: function(data)
     {
       polygonku = createPolygon(data['polygon']);
+      polygons_ku.push(polygonku);
       polygonku.setMap(map);
       var latLng2 = new google.maps.LatLng(data['polygon'][0].LATITUDE,data['polygon'][0].LONGITUDE);
       map.setCenter(latLng2);
       map.setZoom(15);
+      var jum_odp=0;
+      var jum_dp=0;
+      var jum_odc=0;
+      var jum_serv=0;
       $('#ModalCariCluster_Polygon').modal('hide');
       for (var i = 0; i < data['ODP'].length; i++){
         icon = getIcon(data['ODP'][i].KETERANGAN,"odp");
@@ -3130,19 +3185,72 @@ function findCluster_Polygon(){
         var latLng1 = new google.maps.LatLng(lat,lng);
         var lele = google.maps.geometry.poly.containsLocation(latLng1, polygonku);
         if (lele) {
-        var marker = new google.maps.Marker({
-          position: latLng1,
-          map: map,
-          icon: icon
-        });
-        marker.infowindow = new google.maps.InfoWindow({
-          content: setContent(data['ODP'][i],data['ODP'][i].KETERANGAN),
-          maxWidth: 400
-        });
-        infowindow_event(map,marker);
-        pushMarkerPolygon(marker);
+          jum_serv+=parseInt(data['ODP'][i].IS_SERVICE);
+          jum_odp++;
+          var marker = new google.maps.Marker({
+            position: latLng1,
+            map: map,
+            icon: icon
+          });
+          marker.infowindow = new google.maps.InfoWindow({
+            content: setContent(data['ODP'][i],data['ODP'][i].KETERANGAN),
+            maxWidth: 400
+          });
+          infowindow_event(map,marker);
+          pushMarkerPolygon(marker);
         }
       }
+      for (var i = 0; i < data['DP'].length; i++){
+        icon = getIcon(data['DP'][i].STATUS,"dp");
+        var lat = data['DP'][i].LATITUDE;
+        var lng = data['DP'][i].LONGITUDE;
+        var latLng1 = new google.maps.LatLng(lat,lng);
+        var lele = google.maps.geometry.poly.containsLocation(latLng1, polygonku);
+        if (lele) {
+          jum_dp++;
+          var marker = new google.maps.Marker({
+            position: latLng1,
+            map: map,
+            icon: icon
+          });
+          marker.infowindow = new google.maps.InfoWindow({
+            content: setContentDP(data['DP'][i],null),
+            maxWidth: 400
+          });
+          infowindow_event(map,marker);
+          pushMarkerPolygon(marker);
+          }
+      }
+      for (var i = 0; i < data['ODC'].length; i++){
+        icon = 'http://maps.google.com/mapfiles/ms/micons/red-pushpin.png';
+        var lat = data['ODP'][i].LATITUDE;
+        var lng = data['ODP'][i].LONGITUDE;
+        var latLng1 = new google.maps.LatLng(lat,lng);
+        var lele = google.maps.geometry.poly.containsLocation(latLng1, polygonku);
+        if (lele) {
+          jum_odc++;
+          var marker = new google.maps.Marker({
+            position: latLng1,
+            map: map,
+            icon: icon
+          });
+          marker.infowindow = new google.maps.InfoWindow({
+            content: setContentODC(data['ODC'][i]),
+            maxWidth: 400
+          });
+          infowindow_event(map,marker);
+          pushMarkerPolygon(marker);
+        }
+      }
+      data_parsing={
+        name:a,
+        odp:jum_odp,
+        dp:jum_dp,
+        odc:jum_odc,
+        serv:jum_serv
+      };
+      infoWindow = new google.maps.InfoWindow;
+      polygonku.addListener('click',setContentPolygon);
       //
       // if(data['DP'] == ''){
       //   alert('Tidak ada DP disekitar koordinat');
@@ -3162,6 +3270,27 @@ function findCluster_Polygon(){
         alert('Error get data from ajax');
     }
   });
+}
+
+function setContentPolygon(event){
+  var contentString = '<b>'+data_parsing['name']+'</b><br><br>'+
+      'Jumlah ODP : '+data_parsing['odp']+'<br>'+
+      'Jumlah DP : '+data_parsing['dp']+'<br>'+
+      'Jumlah ODC : '+data_parsing['odc']+'<br>'+
+      'Jumlah Service : '+data_parsing['serv']+'<br>'
+      ;
+  // Replace the info window's content and position.
+  infoWindow.setContent(contentString);
+  infoWindow.setPosition(event.latLng);
+  infoWindow.open(map);
+  toogle=1;
+}
+
+function close_polygon(){
+  if (toogle==1) {
+    infoWindow.close();
+    toogle=0;
+  }
 }
 
 function getpoly(data){
@@ -6273,6 +6402,10 @@ function setContent(data,n){
           '<label class="control-label pull-left" style="margin-left: 15px">'+
           '<a class="btn btn-default" onclick="show_table(\''+data.PD_NAME+'\')" data-toggle="modal" data-target="#ModalMaps" data-dismiss="modal"><i class="fa fa-table"></i> Detail Pelanggan</a></label>'+
         '</div>'+
+        '<div class="form-group">'+
+          '<label class="control-label pull-left" style="margin-left: 15px">'+
+          '<a class="btn btn-default" onclick="findALPRO_DP(\''+data.LATITUDE+'\',\''+data.LONGITUDE+'\')"><i class="fa fa-wifi"></i> DP Terdekat</a></label>'+
+        '</div>'+
       '</form>'+
       '<div id="123" class="btn-group pull-right" style="margin-right: 20px">'+
           '<button id="addPhotoODP" onclick="addPhoto()" class="btn btn-sm bg-blue"><i class="fa fa-camera"></i> Add Photo</button>'+
@@ -6378,6 +6511,10 @@ function setContent(data,n){
               '<span class="help-block"></span>'+
           '</div>'+
         '</div>'+
+        '<div class="form-group">'+
+          '<label class="control-label pull-left" style="margin-left: 15px">'+
+          '<a class="btn btn-default" onclick="findALPRO_DP(\''+data.LATITUDE+'\',\''+data.LONGITUDE+'\')"><i class="fa fa-wifi"></i> DP Terdekat</a></label>'+
+        '</div>'+
       '</form>'+
       '<div id="12345" class="btn-group pull-right" style="margin-right: 20px">'+
           '<button id="btnEditODPaku" onclick="editODPaku_btn()" class="btn btn-sm bg-red"><i class="glyphicon glyphicon-pencil"></i> Edit</button>'+
@@ -6442,6 +6579,10 @@ function setContent(data,n){
         '<div class="form-group">'+
           '<label class="control-label pull-left" style="margin-left: 15px">'+
           '<a class="btn btn-default" onclick="show_table(\''+data.PD_NAME+'\')" data-toggle="modal" data-target="#ModalMaps" data-dismiss="modal"><i class="fa fa-table"></i> Detail Pelanggan</a></label>'+
+        '</div>'+
+        '<div class="form-group">'+
+          '<label class="control-label pull-left" style="margin-left: 15px">'+
+          '<a class="btn btn-default" onclick="findALPRO_DP(\''+data.LATITUDE+'\',\''+data.LONGITUDE+'\')"><i class="fa fa-wifi"></i> DP Terdekat</a></label>'+
         '</div>'+
       '</form>'+
       '<div id="123" class="btn-group pull-right" style="margin-right: 20px">'+

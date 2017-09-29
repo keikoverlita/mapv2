@@ -487,6 +487,8 @@ class Maps extends CI_Controller {
 		public function ajax_get_clus_polygon(){
         $data = array();
         $data['ODP'] = $this->m_teknisi->get_koor_odp_clu_polygon();
+				$data['DP'] = $this->m_teknisi->get_koor_dp_clu_polygon();
+				$data['ODC'] = $this->m_teknisi->get_koor_odc_clu_polygon();
 				$data['polygon'] = $this->m_teknisi->get_polygon();				
         echo json_encode($data);
     }
@@ -507,6 +509,11 @@ class Maps extends CI_Controller {
 
     public function ajax_get_alpro(){
         $data = $this->m_teknisi->get_alpro();
+        echo json_encode($data);
+    }
+
+		public function ajax_get_alpro_dp(){
+        $data = $this->m_teknisi->get_alpro_dp();
         echo json_encode($data);
     }
 
