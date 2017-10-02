@@ -1375,6 +1375,41 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="ModalMapsPolygon" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Detail Pelanggan</h4>
+            </div>
+            <div class="modal-body">
+                <table id="table_polygon" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>ND</th>
+                            <th>ND REF</th>
+                            <th>IPTV</th>
+                            <th>NAMA</th>
+                            <th>RP_TAGIHAN</th>
+                            <th>RP_TAGIHAN_INET</th>
+                            <th>ALAMAT</th>
+                            <th>STP_TARGET</th>
+                            <th>CPE_SN</th>
+                            <th>RP_TOTAL</th>
+                            <th id="act3">ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
             <?php echo $this->apps->ver ?> &nbsp;&nbsp;
@@ -1398,6 +1433,8 @@
 </html>
 <script type="text/javascript">
 
+var rp_total = 0;
+var stp_target=[];
 var toogle=0;
 var infoWindow= true;
 var data_parsing = [];
@@ -3175,8 +3212,13 @@ function findCluster_Polygon(){
       map.setZoom(15);
       var jum_odp=0;
       var jum_dp=0;
+      var jum_msan=0;
+      var jum_onu=0;
+      var jum_rk=0;
       var jum_odc=0;
       var jum_serv=0;
+      var jum_tot=0;
+      var jum_avail=0;
       $('#ModalCariCluster_Polygon').modal('hide');
       for (var i = 0; i < data['ODP'].length; i++){
         icon = getIcon(data['ODP'][i].KETERANGAN,"odp");
@@ -3186,7 +3228,10 @@ function findCluster_Polygon(){
         var lele = google.maps.geometry.poly.containsLocation(latLng1, polygonku);
         if (lele) {
           jum_serv+=parseInt(data['ODP'][i].IS_SERVICE);
+          jum_tot+=parseInt(data['ODP'][i].IS_TOTAL);
+          jum_avail+=parseInt(data['ODP'][i].IS_AVAIL);
           jum_odp++;
+          stp_target.push(data['ODP'][i].PD_NAME);
           var marker = new google.maps.Marker({
             position: latLng1,
             map: map,
@@ -3200,6 +3245,7 @@ function findCluster_Polygon(){
           pushMarkerPolygon(marker);
         }
       }
+      // console.log(stp_target);
       for (var i = 0; i < data['DP'].length; i++){
         icon = getIcon(data['DP'][i].STATUS,"dp");
         var lat = data['DP'][i].LATITUDE;
@@ -3223,8 +3269,8 @@ function findCluster_Polygon(){
       }
       for (var i = 0; i < data['ODC'].length; i++){
         icon = 'http://maps.google.com/mapfiles/ms/micons/red-pushpin.png';
-        var lat = data['ODP'][i].LATITUDE;
-        var lng = data['ODP'][i].LONGITUDE;
+        var lat = data['ODC'][i].LATITUDE;
+        var lng = data['ODC'][i].LONGITUDE;
         var latLng1 = new google.maps.LatLng(lat,lng);
         var lele = google.maps.geometry.poly.containsLocation(latLng1, polygonku);
         if (lele) {
@@ -3242,15 +3288,40 @@ function findCluster_Polygon(){
           pushMarkerPolygon(marker);
         }
       }
+      for (var i = 0; i < data['MSAN'].length; i++){
+        var lat = data['MSAN'][i].LATITUDE;
+        var lng = data['MSAN'][i].LONGITUDE;
+        var latLng1 = new google.maps.LatLng(lat,lng);
+        var lele = google.maps.geometry.poly.containsLocation(latLng1, polygonku);
+        if (lele) jum_msan++;
+      }
+      for (var i = 0; i < data['ONU'].length; i++){
+        var lat = data['ONU'][i].LATITUDE;
+        var lng = data['ONU'][i].LONGITUDE;
+        var latLng1 = new google.maps.LatLng(lat,lng);
+        var lele = google.maps.geometry.poly.containsLocation(latLng1, polygonku);
+        if (lele) jum_onu++;
+      }
+      for (var i = 0; i < data['RK'].length; i++){
+        var lat = data['RK'][i].LATITUDE;
+        var lng = data['RK'][i].LONGITUDE;
+        var latLng1 = new google.maps.LatLng(lat,lng);
+        var lele = google.maps.geometry.poly.containsLocation(latLng1, polygonku);
+        if (lele) jum_rk++;
+      }
       data_parsing={
         name:a,
         odp:jum_odp,
         dp:jum_dp,
         odc:jum_odc,
-        serv:jum_serv
+        msan:jum_msan,
+        onu:jum_onu,
+        rk:jum_rk,
+        serv:jum_serv,
+        tot:jum_tot,
+        avail:jum_avail
       };
-      infoWindow = new google.maps.InfoWindow;
-      polygonku.addListener('click',setContentPolygon);
+      PolygonContentIW(data_parsing,stp_target,polygonku);
       //
       // if(data['DP'] == ''){
       //   alert('Tidak ada DP disekitar koordinat');
@@ -3272,14 +3343,111 @@ function findCluster_Polygon(){
   });
 }
 
+function PolygonContentIW(data_parsing,stp_target,polygonku) {
+  $.ajax({
+    url: "<?php echo site_url('Maps/ajax_get_rp_total')?>",
+    type: 'POST',
+    dataType: 'JSON',
+    data: {stp_target: stp_target},
+    success: function(data){
+      rp_total = data[0].RP_TOTAL;
+      infoWindow = new google.maps.InfoWindow;
+      polygonku.addListener('click',setContentPolygon);
+    },
+    error: function() {
+      alert('LELE ERROR!');
+    }
+  })
+}
+
 function setContentPolygon(event){
-  var contentString = '<b>'+data_parsing['name']+'</b><br><br>'+
-      'Jumlah ODP : '+data_parsing['odp']+'<br>'+
-      'Jumlah DP : '+data_parsing['dp']+'<br>'+
-      'Jumlah ODC : '+data_parsing['odc']+'<br>'+
-      'Jumlah Service : '+data_parsing['serv']+'<br>'
-      ;
+  var contentString =
+  '<div style="width: 400px; overflow:hidden !important; line-height: 1.35;white-space: nowrap;">'+
+    '<form class="form-horizontal">'+
+      '<div class="form-group">'+
+        '<label class="control-label pull-left" style="margin-left: 15px">Nama Cluster</label>'+
+        '<div style="margin-left: 150px">'+
+            '<input style="width: 200px;" value="'+data_parsing['name']+'" class="form-control" type="text" readonly>'+
+            '<span class="help-block"></span>'+
+        '</div>'+
+      '</div>'+
+      '<div class="form-group">'+
+        '<label class="control-label pull-left" style="margin-left: 15px">Jumlah ODP</label>'+
+        '<div style="margin-left: 150px">'+
+            '<input style="width: 200px;" value="'+data_parsing['odp']+'" class="form-control" type="text" readonly>'+
+            '<span class="help-block"></span>'+
+        '</div>'+
+      '</div>'+
+      '<div class="form-group">'+
+        '<label class="control-label pull-left" style="margin-left: 15px">Jumlah DP</label>'+
+        '<div style="margin-left: 150px">'+
+            '<input style="width: 200px;" value="'+data_parsing['dp']+'" class="form-control" type="text" readonly>'+
+            '<span class="help-block"></span>'+
+        '</div>'+
+      '</div>'+
+      '<div class="form-group">'+
+        '<label class="control-label pull-left" style="margin-left: 15px">Jumlah MSAN</label>'+
+        '<div style="margin-left: 150px">'+
+            '<input style="width: 200px;" value="'+data_parsing['msan']+'" class="form-control" type="text" readonly>'+
+            '<span class="help-block"></span>'+
+        '</div>'+
+      '</div>'+
+      '<div class="form-group">'+
+        '<label class="control-label pull-left" style="margin-left: 15px">Jumlah ONU</label>'+
+        '<div style="margin-left: 150px">'+
+            '<input style="width: 200px;" value="'+data_parsing['onu']+'" class="form-control" type="text" readonly>'+
+            '<span class="help-block"></span>'+
+        '</div>'+
+      '</div>'+
+      '<div class="form-group">'+
+        '<label class="control-label pull-left" style="margin-left: 15px">Jumlah RK</label>'+
+        '<div style="margin-left: 150px">'+
+            '<input style="width: 200px;" value="'+data_parsing['rk']+'" class="form-control" type="text" readonly>'+
+            '<span class="help-block"></span>'+
+        '</div>'+
+      '</div>'+
+      '<div class="form-group">'+
+        '<label class="control-label pull-left" style="margin-left: 15px">Jumlah ODC</label>'+
+        '<div style="margin-left: 150px">'+
+            '<input style="width: 200px;" value="'+data_parsing['odc']+'" class="form-control" type="text" readonly>'+
+            '<span class="help-block"></span>'+
+        '</div>'+
+      '</div>'+
+      '<div class="form-group">'+
+        '<label class="control-label pull-left" style="margin-left: 15px">Jumlah Pelanggan</label>'+
+        '<div style="margin-left: 150px">'+
+            '<input style="width: 200px;" value="'+data_parsing['serv']+'" class="form-control" type="text" readonly>'+
+            '<span class="help-block"></span>'+
+        '</div>'+
+      '</div>'+
+      '<div class="form-group">'+
+        '<label class="control-label pull-left" style="margin-left: 15px">Port ODP Idle</label>'+
+        '<div style="margin-left: 150px">'+
+            '<input style="width: 200px;" value="'+data_parsing['avail']+'" class="form-control" type="text" readonly>'+
+            '<span class="help-block"></span>'+
+        '</div>'+
+      '</div>'+
+      '<div class="form-group">'+
+        '<label class="control-label pull-left" style="margin-left: 15px">Jumlah Total</label>'+
+        '<div style="margin-left: 150px">'+
+            '<input style="width: 200px;" value="'+data_parsing['tot']+'" class="form-control" type="text" readonly>'+
+            '<span class="help-block"></span>'+
+        '</div>'+
+      '</div>'+
+      '<div class="form-group">'+
+        '<label class="control-label pull-left" style="margin-left: 15px">Jumlah RP Total</label>'+
+        '<div style="margin-left: 150px">'+
+            '<input style="width: 200px;" value="'+rp_total+'" class="form-control" type="text" readonly>'+
+            '<span class="help-block"></span>'+
+        '</div>'+
+      '</div>'+
+    '</form>'+
+    '<a class="btn btn-default" onclick="show_table_polygon()" data-toggle="modal" data-target="#ModalMapsPolygon" data-dismiss="modal"><i class="fa fa-calendar"></i> Detail Pelanggan</a>'+
+  '</div>';
   // Replace the info window's content and position.
+  google.maps.event.addListener(map, 'click', function() {
+    close_polygon();
+  });
   infoWindow.setContent(contentString);
   infoWindow.setPosition(event.latLng);
   infoWindow.open(map);
@@ -6476,8 +6644,7 @@ function setContent(data,n){
           '</div>'+
         '</div>'+
         '<div class="form-group">'+
-          '<label class="control-label pull-left" style="margin-left: 15px">'+
-          '<a onclick="show_table(\''+data.PD_NAME+'\')" data-toggle="modal" data-target="#ModalMaps" data-dismiss="modal">Kapasitas Total</a></label>'+
+          '<label class="control-label pull-left" style="margin-left: 15px">Kapasitas Total</label>'+
           '<div style="margin-left: 150px">'+
               '<input id="IS_TOTAL" style="width: 50px;" value="'+data.IS_TOTAL+'" name="IS_TOTAL" class="form-control" type="text" readonly>'+
               '<span class="help-block"></span>'+
@@ -6516,6 +6683,7 @@ function setContent(data,n){
           '<a class="btn btn-default" onclick="findALPRO_DP(\''+data.LATITUDE+'\',\''+data.LONGITUDE+'\')"><i class="fa fa-wifi"></i> DP Terdekat</a></label>'+
         '</div>'+
       '</form>'+
+      '<a class="btn btn-default" onclick="show_table(\''+data.PD_NAME+'\')" data-toggle="modal" data-target="#ModalMaps" data-dismiss="modal"><i class="fa fa-calendar"></i> Detail Pelanggan</a>'+
       '<div id="12345" class="btn-group pull-right" style="margin-right: 20px">'+
           '<button id="btnEditODPaku" onclick="editODPaku_btn()" class="btn btn-sm bg-red"><i class="glyphicon glyphicon-pencil"></i> Edit</button>'+
       '</div>'+
@@ -7219,6 +7387,51 @@ function show_table(odp){
             "type": "POST",
             "data": function (data){
               data.odp = odp;
+              data.role = '<?php echo $role ?>';
+            }
+        },
+
+        //Set column definition initialisation properties.
+        "columnDefs": [
+        {
+            "targets": [ -1 ], //last column
+            "orderable": false, //set not orderable
+        },
+        ],
+
+    });
+
+    //set input/textarea/select event when change value, remove class error and remove text help block
+    $("input").change(function(){
+        $(this).parent().parent().removeClass('has-error');
+        $(this).next().empty();
+    });
+    $("textarea").change(function(){
+        $(this).parent().parent().removeClass('has-error');
+        $(this).next().empty();
+    });
+    $("select").change(function(){
+        $(this).parent().parent().removeClass('has-error');
+        $(this).next().empty();
+    });
+}
+
+function show_table_polygon(){
+    //datatables
+   table = $('#table_polygon').DataTable({
+
+        "processing": true, //Feature control the processing indicator.
+        "serverSide": true, //Feature control DataTables' server-side processing mode.
+        "bDestroy": true,
+        "order": [], //Initial no order.
+        "scrollY": 320,
+        "scrollX": true,
+        // Load data for the table's content from an Ajax source
+        "ajax": {
+            "url": "<?php echo site_url('Maps/ajax_list_maps_polygon')?>",
+            "type": "POST",
+            "data": function (data){
+              data.stp_target = stp_target;
               data.role = '<?php echo $role ?>';
             }
         },

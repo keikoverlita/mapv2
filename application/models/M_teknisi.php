@@ -494,6 +494,48 @@ class M_teknisi extends CI_Model
         return $_odc;
     }
 
+    public function get_koor_msan_clu_polygon(){
+        $return = array();
+        $this->db->from("msan");
+        $this->db->where('STO',$this->input->get('sto'));
+        $query = $this->db->get();
+        $_msan= array();
+        if ($query->num_rows()>0) {
+            foreach ($query->result() as $row) {
+              array_push($_msan,$row);
+            }
+        }
+        return $_msan;
+    }
+
+    public function get_koor_onu_clu_polygon(){
+        $return = array();
+        $this->db->from("onu");
+        $this->db->where('STO',$this->input->get('sto'));
+        $query = $this->db->get();
+        $_onu= array();
+        if ($query->num_rows()>0) {
+            foreach ($query->result() as $row) {
+              array_push($_onu,$row);
+            }
+        }
+        return $_onu;
+    }
+
+    public function get_koor_rk_clu_polygon(){
+        $return = array();
+        $this->db->from("rk");
+        $this->db->where('STO',$this->input->get('sto'));
+        $query = $this->db->get();
+        $_rk= array();
+        if ($query->num_rows()>0) {
+            foreach ($query->result() as $row) {
+              array_push($_rk,$row);
+            }
+        }
+        return $_rk;
+    }
+
     public function get_koor_odp_clu(){
         $return = array();
         $this->db->from("odc");
@@ -859,6 +901,19 @@ class M_teknisi extends CI_Model
         }
     }
 
+    function get_rp_total(){
+      $stp_target = $this->input->post('stp_target');
+      $where='STP_TARGET= "'.$stp_target[0].'"';
+      for ($i=1; $i < sizeof($stp_target); $i++) {
+        $where.=' OR STP_TARGET= "'.$stp_target[$i].'"';
+      }
+      $this->db->select_sum('RP_TOTAL');
+      $this->db->where($where);
+      $this->db->from('master_maps');
+      $query = $this->db->get();
+      return $query->result();
+    }
+
     function get_pdname($values) {
         $this->db->select('PD_NAME');
         $this->db->where('PD_NAME',$values);
@@ -993,7 +1048,6 @@ class M_teknisi extends CI_Model
 
     private function _get_datatables_query_mapsDP()
     {
-
         $this->db->from($this->table_mapsDP);
         $a = $this->input->post('dp');
         $b = $this->input->post('sto');
@@ -1111,6 +1165,71 @@ class M_teknisi extends CI_Model
         $this->db->limit($_POST['length'], $_POST['start']);
         $query = $this->db->get();
         return $query->result();
+    }
+
+    private function _get_datatables_query_maps_polygon()
+    {
+        $stp_target = $this->input->post('stp_target');
+        $this->db->from('master_maps');
+        $where='STP_TARGET= "'.$stp_target[0].'"';
+        for ($i=1; $i < sizeof($stp_target); $i++) {
+          $where.=' OR STP_TARGET= "'.$stp_target[$i].'"';
+        }
+        $this->db->where($where);
+        $i = 0;
+
+        foreach ($this->column_search_maps as $item) // loop column
+        {
+            if($_POST['search']['value']) // if datatable send POST for search
+            {
+
+                if($i===0) // first loop
+                {
+                    $this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
+                    $this->db->like($item, $_POST['search']['value']);
+                }
+                else
+                {
+                    $this->db->or_like($item, $_POST['search']['value']);
+                }
+
+                if(count($this->column_search_maps) - 1 == $i) //last loop
+                    $this->db->group_end(); //close bracket
+            }
+            $i++;
+        }
+
+        if(isset($_POST['order'])) // here order processing
+        {
+            $this->db->order_by($this->column_order_maps[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+        }
+        else if(isset($this->order_maps))
+        {
+            $order_maps = $this->order_maps;
+            $this->db->order_by(key($order_maps), $order_maps[key($order_maps)]);
+        }
+    }
+
+    function get_datatables_maps_polygon()
+    {
+        $this->_get_datatables_query_maps_polygon();
+        if($_POST['length'] != -1)
+        $this->db->limit($_POST['length'], $_POST['start']);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function count_all_maps_polygon()
+    {
+        $this->db->from($this->table_maps);
+        return $this->db->count_all_results();
+    }
+
+    function count_filtered_maps_polygon()
+    {
+        $this->_get_datatables_query_maps_polygon();
+        $query = $this->db->get();
+        return $query->num_rows();
     }
 
     public function count_all_maps()

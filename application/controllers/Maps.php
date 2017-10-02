@@ -488,8 +488,11 @@ class Maps extends CI_Controller {
         $data = array();
         $data['ODP'] = $this->m_teknisi->get_koor_odp_clu_polygon();
 				$data['DP'] = $this->m_teknisi->get_koor_dp_clu_polygon();
+				$data['MSAN'] = $this->m_teknisi->get_koor_msan_clu_polygon();
+				$data['ONU'] = $this->m_teknisi->get_koor_onu_clu_polygon();
+				$data['RK'] = $this->m_teknisi->get_koor_rk_clu_polygon();
 				$data['ODC'] = $this->m_teknisi->get_koor_odc_clu_polygon();
-				$data['polygon'] = $this->m_teknisi->get_polygon();				
+				$data['polygon'] = $this->m_teknisi->get_polygon();
         echo json_encode($data);
     }
 
@@ -1071,7 +1074,13 @@ class Maps extends CI_Controller {
         echo json_encode($output);
     }
 
-	function ExportCSVaku()
+		public function ajax_get_rp_total()
+		{
+				$data = $this->m_teknisi->get_rp_total();
+				echo json_encode($data);
+		}
+
+		function ExportCSVaku()
     {
         $this->load->dbutil();
         $this->load->helper('file');
@@ -1121,6 +1130,42 @@ class Maps extends CI_Controller {
                         "draw" => $_POST['draw'],
                         "recordsTotal" => $this->m_teknisi->count_all_maps(),
                         "recordsFiltered" => $this->m_teknisi->count_filtered_maps(),
+                        "data" => $data,
+                );
+        //output to json format
+        echo json_encode($output);
+    }
+
+		public function ajax_list_maps_polygon()
+    {
+        $list = $this->m_teknisi->get_datatables_maps_polygon();
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $user) {
+            $no++;
+            $row = array();
+            $row[] = $no;
+            $row[] = $user->ND;
+            $row[] = $user->ND_REF;
+            $row[] = $user->IPTV;
+            $row[] = $user->NAMA;
+            $row[] = $user->RP_TAGIHAN;
+            $row[] = $user->RP_TAGIHAN_INET;
+            $row[] = $user->ALAMAT;
+            $row[] = $user->STP_TARGET;
+            $row[] = $user->CPE_SN;
+            $row[] = $user->RP_TOTAL;
+            if($this->input->post('role') != 'Teknisi'){
+                $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_cust('."'".$user->ND."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                      <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_cust('."'".$user->ND."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+            }
+            $data[] = $row;
+        }
+
+        $output = array(
+                        "draw" => $_POST['draw'],
+                        "recordsTotal" => $this->m_teknisi->count_all_maps_polygon(),
+                        "recordsFiltered" => $this->m_teknisi->count_filtered_maps_polygon(),
                         "data" => $data,
                 );
         //output to json format
