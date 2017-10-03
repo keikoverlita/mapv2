@@ -771,7 +771,7 @@
                         </a>
                       </li>
                       <li>
-                        <a href="#" onclick="hapuscariodp(),tambahodp()">
+                        <a href="#" onclick="hapuscariodp(),modaltambahodp()">
                         <i class="fa fa-pencil"></i>
                         <span>Click On Map</span>
                         </a>
@@ -843,6 +843,7 @@
   <div class="container" style="margin-left:20px"></div>
 </div>
 <div id="repODP"></div>
+<div id="repODP_aku"></div>
 <div id="repDP"></div>
 <div class="modal fade" id="modal_form" role="dialog" data-backdrop="false">
     <div class="modal-dialog" role="document">
@@ -1298,6 +1299,23 @@
               <input type="file" name="userfile1" id="userfile1" size="20" />
               <input type="submit" name="submit" id="submit" />
             </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="ModalTambahODP" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Tambah ODP</h4>
+            </div>
+            <div class="modal-body">
+              <button type="button" class="btn bg-green" onclick="tambahodp()">By STATUS</button>
+              <button type="button" class="btn bg-green" onclick="tambahodp_aku()">By AKUPANSI</button>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -2754,11 +2772,27 @@ function tambahdp(){
   });
 }
 
+function modaltambahodp() {
+  $('#ModalTambahODP').modal('show');
+}
+
 function tambahodp(){
+ $('#ModalTambahODP').modal('hide'); 
   map.setOptions({ draggableCursor: 'crosshair' });
   var listener = google.maps.event.addListener(map, 'click', function(event) {
     placeMarker(event.latLng.lat(),event.latLng.lng());
     addODP(event.latLng.lat(),event.latLng.lng());
+    google.maps.event.removeListener(listener);
+    map.setOptions({ draggableCursor: 'url(http://maps.google.com/mapfiles/openhand.cur), move' });
+  });
+}
+
+function tambahodp_aku(){
+ $('#ModalTambahODP').modal('hide'); 
+  map.setOptions({ draggableCursor: 'crosshair' });
+  var listener = google.maps.event.addListener(map, 'click', function(event) {
+    placeMarker(event.latLng.lat(),event.latLng.lng());
+    addODP_aku(event.latLng.lat(),event.latLng.lng());
     google.maps.event.removeListener(listener);
     map.setOptions({ draggableCursor: 'url(http://maps.google.com/mapfiles/openhand.cur), move' });
   });
@@ -2881,7 +2915,20 @@ function addODP(lat,lng){
           '<div class="form-group">'+
             '<label class="control-label pull-left" style="margin-left: 15px">STO</label>'+
             '<div class="col-md-9 pull-right" style="margin-right: 15px">'+
-              '<input name="add_STO" id="add_STO" maxlength="70" style="width: 300px;" value="" class="form-control" type="text">'+
+                '<select id="add_STO" name="add_STO">'+
+                  '<option value="">-----</option>'+
+                  '<option value="BNO">BNO</option>'+
+                  '<option value="JBR">JBR</option>'+
+                  '<option value="KUT">KUT</option>'+
+                  '<option value="KLM">KLM</option>'+
+                  '<option value="UBN">UBN</option>'+
+                  '<option value="TOP">TOP</option>'+
+                  '<option value="SWI">SWI</option>'+
+                  '<option value="SMY">SMY</option>'+
+                  '<option value="SAU">SAU</option>'+
+                  '<option value="MMN">MMN</option>'+
+                  '<option value="NDA">NDA</option>'+
+                '</select>'+
               '<span class="help-block"></span>'+
             '</div>'+
           '</div>'+
@@ -2957,7 +3004,7 @@ function addODP(lat,lng){
       '</div>'+
     '</div>'+
   '</div>';
-  $('#repODP').replaceWith(modal);
+  $('#repODP_aku').replaceWith(modal);
   $('#formAdd_ODP')[0].reset();
   $('.form-group').removeClass('has-error');
   $('.help-block').empty();
@@ -2968,6 +3015,168 @@ function addODP(lat,lng){
     orientation: "top auto",
     todayHighlight: true,
   });
+}
+
+function addODP_aku(lat,lng){
+  var modal =
+  '<div class="modal fade" id="ModalODP_aku" role="dialog">'+
+    '<div class="modal-dialog">'+
+      '<div class="modal-content">'+
+        '<div class="modal-header">'+
+          '<button type="button" class="close" data-dismiss="modal">&times;</button>'+
+          '<h4 class="modal-title">Tambah ODP</h4>'+
+        '</div>'+
+        '<div class="modal-body">'+
+        '<form action="#" id="formAdd_ODP_aku" class="form-horizontal">'+
+          '<div class="form-group">'+
+            '<label class="control-label pull-left" style="margin-left: 15px">LATITUDE</label>'+
+            '<div class="col-md-9 pull-right" style="margin-right: 15px">'+
+              '<input name="add_LAT" id="add_LAT" style="width: 300px;" value="'+lat+'" class="form-control" type="text" readonly>'+
+              '<span class="help-block"></span>'+
+            '</div>'+
+          '</div>'+
+          '<div class="form-group">'+
+            '<label class="control-label pull-left" style="margin-left: 15px">LONGITUDE</label>'+
+            '<div class="col-md-9 pull-right" style="margin-right: 15px">'+
+              '<input name="add_LONG" id="add_LONG" style="width: 300px;" value="'+lng+'" class="form-control" type="text" readonly>'+
+              '<span class="help-block"></span>'+
+            '</div>'+
+          '</div>'+
+          '<div class="form-group">'+
+            '<label class="control-label pull-left" style="margin-left: 15px">STO</label>'+
+            '<div class="col-md-9 pull-right" style="margin-right: 15px">'+
+                '<select id="add_STO" name="add_STO">'+
+                  '<option value="">-----</option>'+
+                  '<option value="BNO">BNO</option>'+
+                  '<option value="JBR">JBR</option>'+
+                  '<option value="KUT">KUT</option>'+
+                  '<option value="KLM">KLM</option>'+
+                  '<option value="UBN">UBN</option>'+
+                  '<option value="TOP">TOP</option>'+
+                  '<option value="SWI">SWI</option>'+
+                  '<option value="SMY">SMY</option>'+
+                  '<option value="SAU">SAU</option>'+
+                  '<option value="MMN">MMN</option>'+
+                  '<option value="NDA">NDA</option>'+
+                '</select>'+
+              '<span class="help-block"></span>'+
+            '</div>'+
+          '</div>'+
+          '<div class="form-group">'+
+            '<label class="control-label pull-left" style="margin-left: 15px">ODP NAME</label>'+
+            '<div class="col-md-9 pull-right" style="margin-right: 15px">'+
+              '<input name="add_ODP_NAME" id="add_ODP_NAME" maxlength="70" style="width: 300px;" value="" class="form-control" type="text">'+
+              '<span class="help-block"></span>'+
+            '</div>'+
+          '</div>'+
+          '<div class="form-group">'+
+            '<label class="control-label pull-left" style="margin-left: 15px">PD NAME</label>'+
+            '<div class="col-md-9 pull-right" style="margin-right: 15px">'+
+              '<input name="add_PD_NAME" id="add_PD_NAME" maxlength="70" style="width: 300px;" value="" class="form-control" type="text">'+
+              '<span class="help-block"></span>'+
+            '</div>'+
+          '</div>'+
+          '<div class="form-group">'+
+            '<label class="control-label pull-left" style="margin-left: 15px">ODP INDEX</label>'+
+            '<div class="col-md-9 pull-right" style="margin-right: 15px">'+
+              '<input id="add_INDEX" maxlength="50" style="width: 200px;" value="" name="add_INDEX" class="form-control" type="text">'+
+              '<span class="help-block"></span>'+
+            '</div>'+
+          '</div>'+
+          '<div class="form-group">'+
+            '<label class="control-label pull-left" style="margin-left: 15px">F OLT</label>'+
+            '<div class="col-md-9 pull-right" style="margin-right: 15px">'+
+              '<input id="add_OLT" maxlength="70" style="width: 300px;" value="" name="add_OLT" class="form-control" type="text">'+
+              '<span class="help-block"></span>'+
+            '</div>'+
+          '</div>'+
+          '<div class="form-group">'+
+            '<label class="control-label pull-left" style="margin-left: 15px">STATUS ODP</label>'+
+            '<div class="col-md-9 pull-right" style="margin-right: 15px">'+
+                '<select id="add_STATUS" name="add_STATUS">'+
+                  '<option value="">-----</option>'+
+                  '<option value="BELUM GOLIVE">BELUM GOLIVE</option>'+
+                  '<option value="GOLIVE">GOLIVE</option>'+
+                '</select>'+
+                '<span class="help-block"></span>'+
+            '</div>'+
+          '</div>'+
+          '<div class="form-group">'+
+            '<label class="control-label pull-left" style="margin-left: 15px">QR CODE ODP</label>'+
+            '<div class="col-md-9 pull-right" style="margin-right: 15px">'+
+              '<input id="add_QR" maxlength="200" style="width: 200px;" value="" name="add_QR" class="form-control" type="text">'+
+              '<span class="help-block"></span>'+
+            '</div>'+
+          '</div>'+
+          '<div class="form-group">'+
+            '<label class="control-label pull-left" style="margin-left: 15px">TIPE GPON</label>'+
+            '<div class="col-md-9 pull-right" style="margin-right: 15px">'+
+              '<input id="add_TIPE_GPON" maxlength="100" style="width: 200px;" value="" name="add_TIPE_GPON" class="form-control" type="text">'+
+              '<span class="help-block"></span>'+
+            '</div>'+
+          '</div>'+
+          '<div class="form-group">'+
+            '<label class="control-label pull-left" style="margin-left: 15px">IP GPON</label>'+
+            '<div class="col-md-9 pull-right" style="margin-right: 15px">'+
+              '<input id="add_IP_GPON" maxlength="100" style="width: 200px;" value="" name="add_IP_GPON" class="form-control" type="text">'+
+              '<span class="help-block"></span>'+
+            '</div>'+
+          '</div>'+
+          '<div class="form-group">'+
+            '<label class="control-label pull-left" style="margin-left: 15px">PORT GPON</label>'+
+            '<div class="col-md-9 pull-right" style="margin-right: 15px">'+
+              '<input id="add_PORT_GPON" maxlength="100" style="width: 200px;" value="" name="add_PORT_GPON" class="form-control" type="text">'+
+              '<span class="help-block"></span>'+
+            '</div>'+
+          '</div>'+
+          '<div class="form-group">'+
+            '<label class="control-label pull-left" style="margin-left: 15px">IS AVAILABLE</label>'+
+            '<div class="col-md-9 pull-right" style="margin-right: 15px">'+
+              '<input id="add_avail" maxlength="100" style="width: 200px;" value="" name="add_avail" class="form-control" type="text">'+
+              '<span class="help-block"></span>'+
+            '</div>'+
+          '</div>'+
+          '<div class="form-group">'+
+            '<label class="control-label pull-left" style="margin-left: 15px">IS SERVICE</label>'+
+            '<div class="col-md-9 pull-right" style="margin-right: 15px">'+
+              '<input id="add_service" maxlength="100" style="width: 200px;" value="" name="add_service" class="form-control" type="text">'+
+              '<span class="help-block"></span>'+
+            '</div>'+
+          '</div>'+
+          '<div class="form-group">'+
+            '<label class="control-label pull-left" style="margin-left: 15px">IS TOTAL</label>'+
+            '<div class="col-md-9 pull-right" style="margin-right: 15px">'+
+              '<input id="add_total" maxlength="100" style="width: 200px;" value="" name="add_total" class="form-control" type="text">'+
+              '<span class="help-block"></span>'+
+            '</div>'+
+          '</div>'+
+          '<div class="form-group">'+
+            '<label class="control-label pull-left" style="margin-left: 15px">KETERANGAN</label>'+
+            '<div class="col-md-9 pull-right" style="margin-right: 15px">'+
+                '<select id="add_KETERANGAN" name="add_KETERANGAN">'+
+                  '<option value="">-----</option>'+
+                  '<option value="AKUPANSI 0% ">AKUPANSI 0%</option>'+
+                  '<option value="AKUPANSI 0,1%- 40%">AKUPANSI 0,1%- 40%</option>'+
+                  '<option value="AKUPANSI 41%- 80%">AKUPANSI 41%- 80%</option>'+
+                  '<option value="DIATAS 80%">DIATAS 80%</option>'+
+                '</select>'+
+                '<span class="help-block"></span>'+
+            '</div>'+
+          '</div>'+
+        '</form>'+
+        '</div>'+
+        '<div class="modal-footer">'+
+          '<button id="addODPaku_btn" onclick="submit_addODP_aku()" class="btn btn-sm btn-primary">Submit</button>'+
+          '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>'+
+        '</div>'+
+      '</div>'+
+    '</div>'+
+  '</div>';
+  $('#repODP').replaceWith(modal);
+  $('#formAdd_ODP_aku')[0].reset();
+  $('.form-group').removeClass('has-error');
+  $('.help-block').empty();
+  $('#ModalODP_aku').modal('show');
 }
 
 function findALPRO(a,b){
@@ -7133,6 +7342,46 @@ function refreshMarkerDP(dp,sto){
   });
 }
 
+function refreshMarker_aku(pd1){
+  $.ajax({
+    url: "<?php echo site_url("Maps/ajax_refresh_odp_aku")?>",
+    type: "GET",
+    data:{
+      pd: pd1
+    },
+    dataType: "JSON",
+    success: function(data){
+
+          if(data == ''){
+            alert('Tidak ada ODP dengan nama '+pd1);
+          }
+          else{
+            for (var i = 0; i < data.length; i++){
+              icon = getIcon(data[i].KETERANGAN,"odp");
+              var lat = data[i].LATITUDE;
+              var lng = data[i].LONGITUDE;
+              var latLng = new google.maps.LatLng(lat,lng);
+              var marker = new google.maps.Marker({
+                position: latLng,
+                map: map,
+                icon: icon
+              });
+              marker.infowindow = new google.maps.InfoWindow({
+                content: setContent(data[i],data[i].KETERANGAN),
+                maxWidth: 400
+              });
+              infowindow_event(map,marker);
+              pushMarker(marker);
+            }
+          }
+    },
+    error: function (jqXHR, textStatus, errorThrown)
+    {
+        alert('Error get data from ajax');
+    }
+  });
+}
+
 function refreshMarker(pd1){
   $.ajax({
     url: "<?php echo site_url("Maps/ajax_refresh_odp")?>",
@@ -7188,6 +7437,37 @@ function submit_addDP(){
         alert('Data berhasil diupdate');
         refreshMarkerDP(dp,sto);
         $('#ModalDP').modal('hide');
+      }
+      else
+      {
+        for (var i = 0; i < data.inputerror.length; i++)
+        {
+          $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error'); //select parent twice to select div form-group class and add has-error class
+          $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
+        }
+    }
+    },
+    error: function (jqXHR, textStatus, errorThrown)
+    {
+      alert('Error adding / update data');
+    }
+  });
+}
+
+function submit_addODP_aku(){
+  var pd1 = $('#add_PD_NAME').val();
+  $.ajax({
+    url : "<?php echo site_url("Maps/ajax_add_odp_aku")?>",
+    type: "POST",
+    data: $('#formAdd_ODP_aku').serialize(),
+    dataType: "JSON",
+    success: function(data)
+    {
+      if(data.status) //if success close modal and reload ajax table
+      {
+        alert('Data berhasil diupdate');
+        refreshMarker_aku(pd1);
+        $('#ModalODP_aku').modal('hide');
       }
       else
       {

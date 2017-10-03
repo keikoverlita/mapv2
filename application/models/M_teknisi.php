@@ -204,7 +204,7 @@ class M_teknisi extends CI_Model
     function upload_sampledata_csv() {
         $fp = fopen($_FILES['file1']['tmp_name'],'r');
         if($fp){
-            while($csv_line = fgetcsv($fp,20000,";"))
+            while($csv_line = fgetcsv($fp,20000,","))
                 {
                     for ($i = 0, $j = count($csv_line); $i < $j; $i++)
                     {
@@ -220,7 +220,7 @@ class M_teknisi extends CI_Model
                         $insert_csv['LATITUDE'] = $csv_line[8];
                         $insert_csv['LONGITUDE'] = $csv_line[9];
                     }
-                    $this->db->where('ODP_NAME', $insert_csv['ODP_NAME']);
+                    $this->db->where('PD_NAME', $insert_csv['PD_NAME']);
                     $x = $this->db->get('odp_stat');
                     if($x->num_rows() > 0)
                     {
@@ -237,7 +237,7 @@ class M_teknisi extends CI_Model
                             'LONGITUDE' => $insert_csv['LONGITUDE'],
                             'CSV' => '1'
                         );
-                        $this->db->where('ODP_NAME', $insert_csv['ODP_NAME']);
+                        $this->db->where('PD_NAME', $insert_csv['PD_NAME']);
                         $data['crane_features']=$this->db->update('odp_stat', $data);
                         if($data['crane_features'])
                         {
@@ -801,6 +801,20 @@ class M_teknisi extends CI_Model
         return $return;
     }
 
+    public function refresh_odp_aku(){
+        $return = array();
+        $this->db->from("odp_aku");
+        $this->db->where('PD_NAME',$this->input->get('pd'));
+        $this->db->or_where('ODP_NAME',$this->input->get('pd'));
+        $query = $this->db->get();
+        if ($query->num_rows()>0) {
+            foreach ($query->result() as $row) {
+                array_push($return, $row);
+            }
+        }
+        return $return;
+    }
+
     public function refresh_odp(){
         $return = array();
         $this->db->from("odp_stat");
@@ -887,6 +901,20 @@ class M_teknisi extends CI_Model
         return $return;
     }
 
+    function get_odpname_aku($values) {
+        $this->db->select('ODP_NAME');
+        $this->db->where('ODP_NAME',$values);
+        $query = $this->db->get('odp_aku');
+        if($query->num_rows() > 0)
+        {
+            return FALSE;
+        }
+        else
+        {
+            return TRUE;
+        }
+    }
+
     function get_odpname($values) {
         $this->db->select('ODP_NAME');
         $this->db->where('ODP_NAME',$values);
@@ -914,6 +942,20 @@ class M_teknisi extends CI_Model
       return $query->result();
     }
 
+    function get_pdname_aku($values) {
+        $this->db->select('PD_NAME');
+        $this->db->where('PD_NAME',$values);
+        $query = $this->db->get('odp_aku');
+        if($query->num_rows() > 0)
+        {
+            return FALSE;
+        }
+        else
+        {
+            return TRUE;
+        }
+    }
+
     function get_pdname($values) {
         $this->db->select('PD_NAME');
         $this->db->where('PD_NAME',$values);
@@ -933,6 +975,12 @@ class M_teknisi extends CI_Model
         $this->db->where('DP', $this->input->post('dp'));
         $this->db->where('STO', $this->input->post('sto'));
         $this->db->insert("dp",$data);
+    }
+
+    public function add_odp_aku($data)
+    {
+        $this->db->where('PD_NAME', $this->input->post('add_PD_NAME'));
+        $this->db->insert("odp_aku",$data);
     }
 
     public function add_odp($data)

@@ -599,6 +599,11 @@ class Maps extends CI_Controller {
         echo json_encode($data);
     }
 
+    public function ajax_refresh_odp_aku(){
+        $data = $this->m_teknisi->refresh_odp_aku();
+        echo json_encode($data);
+    }
+
     public function ajax_refresh_odp(){
         $data = $this->m_teknisi->refresh_odp();
         echo json_encode($data);
@@ -659,6 +664,33 @@ class Maps extends CI_Controller {
             }
             echo json_encode($select_clu);
         }
+    }
+
+    public function ajax_add_odp_aku()
+    {
+        date_default_timezone_set('Asia/Hong_Kong');
+        $this->_validate_add_odp_aku();
+        $data = array(
+                'STO' => $this->input->post('add_STO'),
+                'ODP_NAME' => $this->input->post('add_ODP_NAME'),
+                'PD_NAME' => $this->input->post('add_PD_NAME'),
+                'LATITUDE' => $this->input->post('add_LAT'),
+                'LONGITUDE' => $this->input->post('add_LONG'),
+                'ODP_INDEX' => $this->input->post('add_INDEX'),
+                'F_OLT' => $this->input->post('add_OLT'),
+                'QR_CODE_ODP' => $this->input->post('add_QR'),
+                'STATUS_ODP' => $this->input->post('add_STATUS'),
+                'TIPE_GPON' => $this->input->post('add_TIPE_GPON'),
+                'IP_GPON' => $this->input->post('add_IP_GPON'),
+                'PORT_GPON' => $this->input->post('add_PORT_GPON'),
+                'IS_AVAIL' => $this->input->post('add_avail'),
+                'IS_SERVICE' => $this->input->post('add_service'),
+                'IS_TOTAL' => $this->input->post('add_total'),
+                'KETERANGAN' => $this->input->post('add_KETERANGAN'),
+                'UPDATE_DATE' => date('m/d/Y H:i'),
+            );
+        $this->m_teknisi->add_odp_aku($data);
+        echo json_encode(array("status" => TRUE));
     }
 
     public function ajax_add_odp()
@@ -828,6 +860,137 @@ class Maps extends CI_Controller {
         {
             $data['inputerror'][] = 'add_STATUS_DP';
             $data['error_string'][] = 'Status masih kosong';
+            $data['status'] = FALSE;
+        }
+
+        if($data['status'] === FALSE)
+        {
+            echo json_encode($data);
+            exit();
+        }
+    }
+
+    private function _validate_add_odp_aku(){
+        $data = array();
+        $data['error_string'] = array();
+        $data['inputerror'] = array();
+        $data['status'] = TRUE;
+
+        if($this->input->post('add_ODP_NAME') != null)
+        {
+            $x = $this->m_teknisi->get_odpname_aku($this->input->post('add_ODP_NAME'));
+            if ($x == FALSE)
+            {
+                $data['inputerror'][] = 'add_ODP_NAME';
+                $data['error_string'][] = 'add_ODP_NAME telah dipakai';
+                $data['status'] = FALSE;
+            }
+        }
+        else
+        {
+            $data['inputerror'][] = 'add_ODP_NAME';
+            $data['error_string'][] = 'ODP Name masih kosong';
+            $data['status'] = FALSE;
+        }
+
+        if($this->input->post('add_PD_NAME') != null)
+        {
+            $x = $this->m_teknisi->get_pdname_aku($this->input->post('add_PD_NAME'));
+            if ($x == FALSE)
+            {
+                $data['inputerror'][] = 'add_PD_NAME';
+                $data['error_string'][] = 'add_PD_NAME telah dipakai';
+                $data['status'] = FALSE;
+            }
+        }
+        else
+        {
+            $data['inputerror'][] = 'add_PD_NAME';
+            $data['error_string'][] = 'ODP Name masih kosong';
+            $data['status'] = FALSE;
+        }
+
+        if($this->input->post('add_STO') == '')
+        {
+            $data['inputerror'][] = 'add_STO';
+            $data['error_string'][] = 'STO masih kosong';
+            $data['status'] = FALSE;
+        }
+
+        if($this->input->post('add_INDEX') == '')
+        {
+            $data['inputerror'][] = 'add_INDEX';
+            $data['error_string'][] = 'INDEX masih kosong';
+            $data['status'] = FALSE;
+        }
+
+        if($this->input->post('add_OLT') == '')
+        {
+            $data['inputerror'][] = 'add_OLT';
+            $data['error_string'][] = 'OLT masih kosong';
+            $data['status'] = FALSE;
+        }
+
+        if($this->input->post('add_QR') == '')
+        {
+            $data['inputerror'][] = 'add_QR';
+            $data['error_string'][] = 'QR CODE ODP masih kosong';
+            $data['status'] = FALSE;
+        }
+
+        if($this->input->post('add_STATUS') == '')
+        {
+            $data['inputerror'][] = 'add_STATUS';
+            $data['error_string'][] = 'STATUS masih kosong';
+            $data['status'] = FALSE;
+        }
+
+        if($this->input->post('add_TIPE_GPON') == '')
+        {
+            $data['inputerror'][] = 'add_TIPE_GPON';
+            $data['error_string'][] = 'TIPE GPON masih kosong';
+            $data['status'] = FALSE;
+        }
+
+        if($this->input->post('add_IP_GPON') == '')
+        {
+            $data['inputerror'][] = 'add_IP_GPON';
+            $data['error_string'][] = 'IP GPON masih kosong';
+            $data['status'] = FALSE;
+        }
+
+        if($this->input->post('add_PORT_GPON') == '')
+        {
+            $data['inputerror'][] = 'add_PORT_GPON';
+            $data['error_string'][] = 'PORT GPON masih kosong';
+            $data['status'] = FALSE;
+        }
+
+        if($this->input->post('add_avail') == '')
+        {
+            $data['inputerror'][] = 'add_avail';
+            $data['error_string'][] = 'IS AVAILABLE masih kosong';
+            $data['status'] = FALSE;
+        }
+
+        if($this->input->post('add_service') == '')
+        {
+            $data['inputerror'][] = 'add_service';
+            $data['error_string'][] = 'IS SERVICE masih kosong';
+            $data['status'] = FALSE;
+        }
+
+        if($this->input->post('add_total') == '')
+        {
+            $data['inputerror'][] = 'add_total';
+            $data['error_string'][] = 'IS TOTAL masih kosong';
+            $data['status'] = FALSE;
+        }
+
+        if($this->input->post('add_KETERANGAN') == '')
+        {
+            $data['inputerror'][] = 'add_KETERANGAN';
+            $data['error_string'][] = 'KETERANGAN biaya masih kosong';
             $data['status'] = FALSE;
         }
 
