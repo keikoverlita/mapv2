@@ -1053,7 +1053,7 @@
                 <tr><input type="file" class="form-control" name="file2" id="file2"></tr>
                 <tr>
                   <div class="modal-footer">
-                    <button type="submit" id="submitBtn" name="submit" class="btn btn-info">Save</button>
+                    <button type="submit" id="submitBtn_cust" name="submit" class="btn btn-info">Save</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                   </div>
                 </tr>
@@ -2018,8 +2018,8 @@ $(function() {
 $(function() {
   $('#form2').submit(function(e) {
     e.preventDefault();
-    $('#submitBtn').text('Saving...'); //change button text
-    $('#submitBtn').attr('disabled',true); //set button disable
+    $('#submitBtn_cust').text('Saving...'); //change button text
+    $('#submitBtn_cust').attr('disabled',true); //set button disable
     var data = new FormData();
     data.append('file2',$('#file2')[0].files[0]);
     $.ajax({
@@ -2032,8 +2032,8 @@ $(function() {
       success: function(data)
       {
         alert('Berhasil');
-        $('#submitBtn').text('Save'); //change button text
-        $('#submitBtn').attr('disabled',false); //set button disable
+        $('#submitBtn_cust').text('Save'); //change button text
+        $('#submitBtn_cust').attr('disabled',false); //set button disable
         $('#ModalCust').modal('hide');
       },
       error: function (jqXHR, textStatus, errorThrown)

@@ -210,24 +210,22 @@ class M_teknisi extends CI_Model
                     {
                         $insert_csv = array();
                         $insert_csv['STO'] = $csv_line[0];
-                        $insert_csv['ODP_NAME'] = $csv_line[1];
-                        $insert_csv['PD_NAME'] = $csv_line[2];
-                        $insert_csv['STATUS'] = $csv_line[3];
-                        $insert_csv['PIC_BENJAR'] = $csv_line[4];
-                        $insert_csv['DESKRIPSI'] = $csv_line[5];
-                        $insert_csv['MATERIAL'] = $csv_line[6];
-                        $insert_csv['PELAKSANAAN'] = $csv_line[7];
-                        $insert_csv['LATITUDE'] = $csv_line[8];
-                        $insert_csv['LONGITUDE'] = $csv_line[9];
+                        $insert_csv['ALPRO'] = $csv_line[1];
+                        $insert_csv['STATUS'] = $csv_line[2];
+                        $insert_csv['PIC_BENJAR'] = $csv_line[3];
+                        $insert_csv['DESKRIPSI'] = $csv_line[4];
+                        $insert_csv['MATERIAL'] = $csv_line[5];
+                        $insert_csv['PELAKSANAAN'] = $csv_line[6];
+                        $insert_csv['LATITUDE'] = $csv_line[7];
+                        $insert_csv['LONGITUDE'] = $csv_line[8];
                     }
-                    $this->db->where('PD_NAME', $insert_csv['PD_NAME']);
+                    $this->db->where('PD_NAME', $insert_csv['ALPRO']);
+                    $this->db->or_where('ODP_NAME', $insert_csv['ALPRO']);
                     $x = $this->db->get('odp_stat');
                     if($x->num_rows() > 0)
                     {
                         $data = array(
                             'STO' => $insert_csv['STO'],
-                            'ODP_NAME' => $insert_csv['ODP_NAME'],
-                            'PD_NAME' => $insert_csv['PD_NAME'],
                             'STATUS' => $insert_csv['STATUS'],
                             'PIC_BENJAR' => $insert_csv['PIC_BENJAR'],
                             'DESKRIPSI' => $insert_csv['DESKRIPSI'],
@@ -237,7 +235,8 @@ class M_teknisi extends CI_Model
                             'LONGITUDE' => $insert_csv['LONGITUDE'],
                             'CSV' => '1'
                         );
-                        $this->db->where('PD_NAME', $insert_csv['PD_NAME']);
+                        $this->db->where('PD_NAME', $insert_csv['ALPRO']);
+                        $this->db->or_where('ODP_NAME', $insert_csv['ALPRO']);
                         $data['crane_features']=$this->db->update('odp_stat', $data);
                         if($data['crane_features'])
                         {
