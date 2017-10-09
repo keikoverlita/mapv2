@@ -1622,6 +1622,7 @@ $(document).ready(function(){
 $(document).ready(function(){
   if('<?php echo $role ?>' == "Teknisi"){
     $('#act2').remove();
+    $('#act3').remove();
     $('#download_csv').remove();
   }
   else if('<?php echo $role ?>' == "Help Desk"){
