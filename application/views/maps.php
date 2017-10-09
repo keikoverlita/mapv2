@@ -25,7 +25,7 @@
     <script src="<?php echo base_url('assets/plugins/datatables/js/jquery.dataTables.min.js')?>"></script>
     <script src="<?php echo base_url('assets/maps/maps.js')?>"></script>
 </head>
-<body class="hold-transition skin-green fixed sidebar-mini">
+<body class="hold-transition skin-red fixed sidebar-mini">
     <div class="wrapper">
       <header class="main-header">
         <a href="<?php echo base_url() ?>" class="logo">
