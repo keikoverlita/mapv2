@@ -808,7 +808,7 @@
                 <span class="label pull-right bg-blue"></span>
                 </a>
               </li>
-				 <li>
+	      <li id="mancore">
                 <a href="https://drive.google.com/drive/mobile/folders/0BxN5M7G6lyuOR2VKajJJMEdQRU0" target="_blank">
                 <i class="fa fa-external-link"></i>
                 <span>ManCore FTM-ODC-ODP</span>
@@ -1631,9 +1631,11 @@ $(document).ready(function(){
     $('#act2').remove();
     $('#act3').remove();
     $('#download_csv').remove();
+    $('#mancore').remove();
   }
   else if('<?php echo $role ?>' == "Help Desk"){
     $('#download_csv').remove();
+    $('#mancore').remove();
   }
 });
 
