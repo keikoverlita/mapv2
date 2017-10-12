@@ -808,6 +808,13 @@
                 <span class="label pull-right bg-blue"></span>
                 </a>
               </li>
+				 <li>
+                <a href="https://drive.google.com/drive/mobile/folders/0BxN5M7G6lyuOR2VKajJJMEdQRU0" target="_blank">
+                <i class="fa fa-external-link"></i>
+                <span>ManCore FTM-ODC-ODP</span>
+                <span class="label pull-right bg-blue"></span>
+                </a>
+              </li>
               <li id="updatecust">
                 <a href="#" onclick="updateCust()">
                 <i class="fa fa-users"></i>
