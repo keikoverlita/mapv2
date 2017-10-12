@@ -5,7 +5,7 @@ class Apps {
     var $page_header="MAP ODP & DP Witel Denpasar";
     var $title="MAP";
     var $release="Version Production";
-    var $ver="Version 2.1.1";
+    var $ver="Version 2.3.0";
     var $modname="";
     var $moddesc="";
     var $copyright = 'MAP &copy; 2017';
