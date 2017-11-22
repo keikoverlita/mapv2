@@ -428,7 +428,7 @@ a:focus {
   padding-bottom: 10px;
 }
 .fixed .sidebar {
-  overflow: scroll;
+  overflow: auto;
   height: 100%;
 }
 .sidebar-form input:focus {

@@ -75,7 +75,7 @@
                     <li>
                     <a href="#" onclick="hapuscariodp(),closeSMY_aku('aku')">
                     <i class="fa fa-bars"></i>
-                    <span>OKUPANSI</span>
+                    <span>AKUPANSI</span>
                     </a>
                     <ul class="treeview-menu">
                       <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_SMY('AKUPANSI 0% ')"><i id="aku_SMY_0" class="fa fa-circle-o"></i>0%</a></li>
@@ -109,7 +109,7 @@
                     <li>
                     <a href="#" onclick="hapuscariodp(),closeSAU_aku('aku')">
                     <i class="fa fa-bars"></i>
-                    <span>OKUPANSI</span>
+                    <span>AKUPANSI</span>
                     </a>
                     <ul class="treeview-menu">
                       <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_SAU('AKUPANSI 0% ')"><i id="aku_SAU_0" class="fa fa-circle-o"></i>0%</a></li>
@@ -143,7 +143,7 @@
                     <li>
                     <a href="#" onclick="hapuscariodp(),closeBNO_aku('aku')">
                     <i class="fa fa-bars"></i>
-                    <span>OKUPANSI</span>
+                    <span>AKUPANSI</span>
                     </a>
                     <ul class="treeview-menu">
                       <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_BNO('AKUPANSI 0% ')"><i id="aku_BNO_0" class="fa fa-circle-o"></i>0%</a></li>
@@ -177,7 +177,7 @@
                     <li>
                     <a href="#" onclick="hapuscariodp(),closeJBR_aku('aku')">
                     <i class="fa fa-bars"></i>
-                    <span>OKUPANSI</span>
+                    <span>AKUPANSI</span>
                     </a>
                     <ul class="treeview-menu">
                       <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_JBR('AKUPANSI 0% ')"><i id="aku_JBR_0" class="fa fa-circle-o"></i>0%</a></li>
@@ -211,7 +211,7 @@
                     <li>
                     <a href="#" onclick="hapuscariodp(),closeKLM_aku('aku')">
                     <i class="fa fa-bars"></i>
-                    <span>OKUPANSI</span>
+                    <span>AKUPANSI</span>
                     </a>
                     <ul class="treeview-menu">
                       <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_KLM('AKUPANSI 0% ')"><i id="aku_KLM_0" class="fa fa-circle-o"></i>0%</a></li>
@@ -245,7 +245,7 @@
                     <li>
                     <a href="#" onclick="hapuscariodp(),closeKUT_aku('aku')">
                     <i class="fa fa-bars"></i>
-                    <span>OKUPANSI</span>
+                    <span>AKUPANSI</span>
                     </a>
                     <ul class="treeview-menu">
                       <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_KUT('AKUPANSI 0% ')"><i id="aku_KUT_0" class="fa fa-circle-o"></i>0%</a></li>
@@ -279,7 +279,7 @@
                     <li>
                     <a href="#" onclick="hapuscariodp(),closeMMN_aku('aku')">
                     <i class="fa fa-bars"></i>
-                    <span>OKUPANSI</span>
+                    <span>AKUPANSI</span>
                     </a>
                     <ul class="treeview-menu">
                       <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_MMN('AKUPANSI 0% ')"><i id="aku_MMN_0" class="fa fa-circle-o"></i>0%</a></li>
@@ -313,7 +313,7 @@
                     <li>
                     <a href="#" onclick="hapuscariodp(),closeNSD_aku('aku')">
                     <i class="fa fa-bars"></i>
-                    <span>OKUPANSI</span>
+                    <span>AKUPANSI</span>
                     </a>
                     <ul class="treeview-menu">
                       <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_NSD('AKUPANSI 0% ')"><i id="aku_NSD_0" class="fa fa-circle-o"></i>0%</a></li>
@@ -347,7 +347,7 @@
                     <li>
                     <a href="#" onclick="hapuscariodp(),closeSWI_aku('aku')">
                     <i class="fa fa-bars"></i>
-                    <span>OKUPANSI</span>
+                    <span>AKUPANSI</span>
                     </a>
                     <ul class="treeview-menu">
                       <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_SWI('AKUPANSI 0% ')"><i id="aku_SWI_0" class="fa fa-circle-o"></i>0%</a></li>
@@ -381,7 +381,7 @@
                     <li>
                     <a href="#" onclick="hapuscariodp(),closeTOP_aku('aku')">
                     <i class="fa fa-bars"></i>
-                    <span>OKUPANSI</span>
+                    <span>AKUPANSI</span>
                     </a>
                     <ul class="treeview-menu">
                       <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_TOP('AKUPANSI 0% ')"><i id="aku_TOP_0" class="fa fa-circle-o"></i>0%</a></li>
@@ -415,7 +415,7 @@
                     <li>
                     <a href="#" onclick="hapuscariodp(),closeUBN_aku('aku')">
                     <i class="fa fa-bars"></i>
-                    <span>OKUPANSI</span>
+                    <span>AKUPANSI</span>
                     </a>
                     <ul class="treeview-menu">
                       <li><a href="#" onclick="hapuscariodp(),parseCreateMarker_UBN('AKUPANSI 0% ')"><i id="aku_UBN_0" class="fa fa-circle-o"></i>0%</a></li>
@@ -767,7 +767,7 @@
                       <li>
                         <a href="#" onclick="hapuscariodp(),uploadCSVaku()">
                         <i class="fa fa-map"></i>
-                        <span>Upload File By AKUPANSI</span>
+                        <span>Upload File By Akupansi</span>
                         </a>
                       </li>
                       <li>
@@ -1106,7 +1106,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Upload File CSV by AKUPANSI</h4>
+                <h4 class="modal-title">Upload File CSV by Akupansi</h4>
             </div>
             <div class="modal-body">
             <form action="" method="post" name="form3" id="form3" enctype="multipart/form-data">
@@ -5149,7 +5149,7 @@ function createMarker_SMY(nama_kelas,nilai){
         {
 
           if(data == ''){
-            alert('Tidak ada ODP dengan AKUPANSI '+nilai);
+            alert('Tidak ada ODP dengan akupansi '+nilai);
           }
           else{
             for (var i = 0; i < data.length; i++){
@@ -5295,7 +5295,7 @@ function createMarker_SAU(nama_kelas,nilai){
         {
 
           if(data == ''){
-            alert('Tidak ada ODP dengan AKUPANSI '+nilai);
+            alert('Tidak ada ODP dengan akupansi '+nilai);
           }
           else{
             for (var i = 0; i < data.length; i++){
@@ -5441,7 +5441,7 @@ function createMarker_BNO(nama_kelas,nilai){
         {
 
           if(data == ''){
-            alert('Tidak ada ODP dengan AKUPANSI '+nilai);
+            alert('Tidak ada ODP dengan akupansi '+nilai);
           }
           else{
             for (var i = 0; i < data.length; i++){
@@ -5587,7 +5587,7 @@ function createMarker_JBR(nama_kelas,nilai){
         {
 
           if(data == ''){
-            alert('Tidak ada ODP dengan AKUPANSI '+nilai);
+            alert('Tidak ada ODP dengan akupansi '+nilai);
           }
           else{
             for (var i = 0; i < data.length; i++){
@@ -5733,7 +5733,7 @@ function createMarker_UBN(nama_kelas,nilai){
         {
 
           if(data == ''){
-            alert('Tidak ada ODP dengan AKUPANSI '+nilai);
+            alert('Tidak ada ODP dengan akupansi '+nilai);
           }
           else{
             for (var i = 0; i < data.length; i++){
@@ -5879,7 +5879,7 @@ function createMarker_KLM(nama_kelas,nilai){
         {
 
           if(data == ''){
-            alert('Tidak ada ODP dengan AKUPANSI '+nilai);
+            alert('Tidak ada ODP dengan akupansi '+nilai);
           }
           else{
             for (var i = 0; i < data.length; i++){
@@ -6025,7 +6025,7 @@ function createMarker_KUT(nama_kelas,nilai){
         {
 
           if(data == ''){
-            alert('Tidak ada ODP dengan AKUPANSI '+nilai);
+            alert('Tidak ada ODP dengan akupansi '+nilai);
           }
           else{
             for (var i = 0; i < data.length; i++){
@@ -6171,7 +6171,7 @@ function createMarker_MMN(nama_kelas,nilai){
         {
 
           if(data == ''){
-            alert('Tidak ada ODP dengan AKUPANSI '+nilai);
+            alert('Tidak ada ODP dengan akupansi '+nilai);
           }
           else{
             for (var i = 0; i < data.length; i++){
@@ -6317,7 +6317,7 @@ function createMarker_NSD(nama_kelas,nilai){
         {
 
           if(data == ''){
-            alert('Tidak ada ODP dengan AKUPANSI '+nilai);
+            alert('Tidak ada ODP dengan akupansi '+nilai);
           }
           else{
             for (var i = 0; i < data.length; i++){
@@ -6463,7 +6463,7 @@ function createMarker_SWI(nama_kelas,nilai){
         {
 
           if(data == ''){
-            alert('Tidak ada ODP dengan AKUPANSI '+nilai);
+            alert('Tidak ada ODP dengan akupansi '+nilai);
           }
           else{
             for (var i = 0; i < data.length; i++){
@@ -6609,7 +6609,7 @@ function createMarker_TOP(nama_kelas,nilai){
         {
 
           if(data == ''){
-            alert('Tidak ada ODP dengan AKUPANSI '+nilai);
+            alert('Tidak ada ODP dengan akupansi '+nilai);
           }
           else{
             for (var i = 0; i < data.length; i++){
@@ -6817,7 +6817,7 @@ function setContent(data,n){
     ||(n == "AKUPANSI 41%- 80%")
     ||(n == "DIATAS 80%"))
   {
-    var content_AKUPANSI =
+    var content_akupansi =
     '<div style="width: 400px; overflow:hidden !important; line-height: 1.35;white-space: nowrap;">'+
       '<form action="#" id="formODPaku" class="form-horizontal">'+
         '<div class="form-group">'+
@@ -6877,7 +6877,7 @@ function setContent(data,n){
           '</div>'+
         '</div>'+
         '<div class="form-group">'+
-          '<label class="control-label pull-left" style="margin-left: 15px">AKUPANSI</label>'+
+          '<label class="control-label pull-left" style="margin-left: 15px">Akupansi</label>'+
           '<div style="margin-left: 150px">'+
               '<input id="KETERANGAN" style="width: 200px;" value="'+data.KETERANGAN+'" name="KETERANGAN" class="form-control" type="text" readonly>'+
               '<span class="help-block"></span>'+
@@ -6917,7 +6917,7 @@ function setContent(data,n){
           '<button style="display: none;" id="btnSaveODPaku" onclick="saveODPaku()" class="btn btn-sm bg-green"><i class="fa fa-book"></i> Save</button>'+
       '</div>'+
     '</div>';
-    return content_AKUPANSI;
+    return content_akupansi;
   }
   else
   {

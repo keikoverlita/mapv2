@@ -2,7 +2,7 @@
   <html>
   <head>
     <meta charset="UTF-8">
-    <title><?php echo $this->apps->title; ?></title>
+    <title>SEA</title>
     
     <link rel="shortcut icon" href="<?=base_url().'assets/sidebar/images/logoTelkom_icon.png'; ?>" />
     
@@ -23,7 +23,7 @@
   <body class="login-page">
     <div class="login-box">
       <div class="login-logo">
-        <a href="<?=base_url();?>"><b>MAP</b><img class="mainimage" src="<?php echo base_url().'assets/sidebar/images/logoTelkom_sm.png'; ?>" width="100" /><br>ODP & DP<br>Witel Denpasar</a>
+        <a href="<?=base_url();?>"><b></b><img class="mainimage" src="<?php echo base_url().'assets/sidebar/images/logoTelkom_sm.png'; ?>" width="400" /></a>
       </div><!-- /.login-logo -->
       
       <div class="login-box-body">
