@@ -167,6 +167,7 @@ class M_teknisi extends CI_Model
                 $val = $row->STP_TARGET;
                 $this->db->from("odp_aku");
                 $this->db->where('PD_NAME',$val);
+                $this->db->or_where('ODP_NAME',$val);
                 $query = $this->db->get();
                 if ($query->num_rows()>0) {
                     foreach ($query->result() as $row) {
