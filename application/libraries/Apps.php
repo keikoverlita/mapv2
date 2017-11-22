@@ -1,14 +1,14 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Apps {
-    var $name="MAP - ODP & DP Witel Denpasar";
-    var $page_header="MAP ODP & DP Witel Denpasar";
-    var $title="MAP";
-    var $release="Version Production";
-    var $ver="Version 2.3.0";
+    var $name="Search Engine Alat Produksi Akses";
+    var $page_header="Search Engine Alat Produksi Akses";
+    var $title="SEE ACCESS";
+    var $release="Version Development";
+    var $ver="Version 2.4.0";
     var $modname="";
     var $moddesc="";
-    var $copyright = 'MAP &copy; 2017';
+    var $copyright = 'SEE ACCESS &copy; 2017';
     var $statnav="development";
     
     public function __construct(){

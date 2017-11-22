@@ -2,7 +2,7 @@
   <html>
   <head>
     <meta charset="UTF-8">
-    <title>SEA</title>
+    <title>SEE ACCESS</title>
     
     <link rel="shortcut icon" href="<?=base_url().'assets/sidebar/images/logoTelkom_icon.png'; ?>" />
     
@@ -23,7 +23,11 @@
   <body class="login-page">
     <div class="login-box">
       <div class="login-logo">
-        <a href="<?=base_url();?>"><b></b><img class="mainimage" src="<?php echo base_url().'assets/sidebar/images/logoTelkom_sm.png'; ?>" width="400" /></a>
+        <a href="<?=base_url();?>">
+          <img class="mainimage" src="<?php echo base_url().'assets/sidebar/images/logoTelkom_sm.png'; ?>" width="400" />
+          <br>Search Engine
+          <br>Alat Produksi Akses
+        </a>
       </div><!-- /.login-logo -->
       
       <div class="login-box-body">
