@@ -1169,8 +1169,10 @@ class M_teknisi extends CI_Model
     {
 
         $this->db->from($this->table_maps);
-        $a = $this->input->post('odp');
+        $a = $this->input->post('odp_name');
+        $b = $this->input->post('pd_name');
         $this->db->where('STP_TARGET',$a);
+        $this->db->or_where('STP_TARGET',$b);
 
         $i = 0;
 

@@ -6794,7 +6794,7 @@ function setContent(data,n){
         '</div>'+
         '<div class="form-group">'+
           '<label class="control-label pull-left" style="margin-left: 15px">'+
-          '<a class="btn btn-default" onclick="show_table(\''+data.PD_NAME+'\')" data-toggle="modal" data-target="#ModalMaps" data-dismiss="modal"><i class="fa fa-table"></i> Detail Pelanggan</a></label>'+
+          '<a class="btn btn-default" onclick="show_table(\''+data.PD_NAME+'\',\''+data.ODP_NAME+'\')" data-toggle="modal" data-target="#ModalMaps" data-dismiss="modal"><i class="fa fa-table"></i> Detail Pelanggan</a></label>'+
         '</div>'+
         '<div class="form-group">'+
           '<label class="control-label pull-left" style="margin-left: 15px">'+
@@ -6909,7 +6909,7 @@ function setContent(data,n){
           '<a class="btn btn-default" onclick="findALPRO_DP(\''+data.LATITUDE+'\',\''+data.LONGITUDE+'\')"><i class="fa fa-wifi"></i> DP Terdekat</a></label>'+
         '</div>'+
       '</form>'+
-      '<a class="btn btn-default" onclick="show_table(\''+data.PD_NAME+'\')" data-toggle="modal" data-target="#ModalMaps" data-dismiss="modal"><i class="fa fa-calendar"></i> Detail Pelanggan</a>'+
+      '<a class="btn btn-default" onclick="show_table(\''+data.PD_NAME+'\',\''+data.ODP_NAME+'\')" data-toggle="modal" data-target="#ModalMaps" data-dismiss="modal"><i class="fa fa-calendar"></i> Detail Pelanggan</a>'+
       '<div id="12345" class="btn-group pull-right" style="margin-right: 20px">'+
           '<button id="btnEditODPaku" onclick="editODPaku_btn()" class="btn btn-sm bg-red"><i class="glyphicon glyphicon-pencil"></i> Edit</button>'+
       '</div>'+
@@ -6972,7 +6972,7 @@ function setContent(data,n){
         '</div>'+
         '<div class="form-group">'+
           '<label class="control-label pull-left" style="margin-left: 15px">'+
-          '<a class="btn btn-default" onclick="show_table(\''+data.PD_NAME+'\')" data-toggle="modal" data-target="#ModalMaps" data-dismiss="modal"><i class="fa fa-table"></i> Detail Pelanggan</a></label>'+
+          '<a class="btn btn-default" onclick="show_table(\''+data.PD_NAME+'\',\''+data.ODP_NAME+'\')" data-toggle="modal" data-target="#ModalMaps" data-dismiss="modal"><i class="fa fa-table"></i> Detail Pelanggan</a></label>'+
         '</div>'+
         '<div class="form-group">'+
           '<label class="control-label pull-left" style="margin-left: 15px">'+
@@ -7668,7 +7668,7 @@ function show_tableDP(dp,sto){
     });
 }
 
-function show_table(odp){
+function show_table(pd_name,odp_name){
     //datatables
    table = $('#table').DataTable({
 
@@ -7683,7 +7683,8 @@ function show_table(odp){
             "url": "<?php echo site_url('Maps/ajax_list_maps')?>",
             "type": "POST",
             "data": function (data){
-              data.odp = odp;
+              data.odp_name = odp_name;
+              data.pd_name = pd_name;
               data.role = '<?php echo $role ?>';
             }
         },
