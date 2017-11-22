@@ -3588,7 +3588,7 @@ function PolygonContentIW(data_parsing,stp_target,polygonku) {
 
 function setContentPolygon(event){
   var contentString =
-  '<div style="height: 400px; width: 400px; overflow:hidden !important; line-height: 1.35;white-space: nowrap;">'+
+  '<div style="width: 400px; overflow:hidden !important; line-height: 1.35;white-space: nowrap;">'+
     '<form class="form-horizontal">'+
       '<div class="form-group">'+
         '<label class="control-label pull-left" style="margin-left: 15px">Nama Cluster</label>'+
@@ -6744,7 +6744,7 @@ function setContent(data,n){
     ||(n == "ON PROGRESS"))
   {
     var content_status =
-    '<div style="height: 400px; width: 400px; overflow:hidden !important; line-height: 1.35;white-space: nowrap;">'+
+    '<div style="width: 400px; overflow:hidden !important; line-height: 1.35;white-space: nowrap;">'+
       '<form action="#" id="formODPStatus" class="form-horizontal">'+
         '<div class="form-group">'+
           '<h4 align="center"><input name="PD_NAME" id="PD_NAME" maxlength="70" style="width: 300px; text-align: center;" value="'+ data.PD_NAME +'" class="form-control" type="text" readonly></h4>'+
@@ -6818,7 +6818,7 @@ function setContent(data,n){
     ||(n == "DIATAS 80%"))
   {
     var content_AKUPANSI =
-    '<div style="height: 400px; width: 400px; overflow:hidden !important; line-height: 1.35;white-space: nowrap;">'+
+    '<div style="width: 400px; overflow:hidden !important; line-height: 1.35;white-space: nowrap;">'+
       '<form action="#" id="formODPaku" class="form-horizontal">'+
         '<div class="form-group">'+
           '<label class="control-label pull-left" style="margin-left: 15px">Tanggal Update</label>'+
@@ -6922,7 +6922,7 @@ function setContent(data,n){
   else
   {
     var content_status =
-    '<div style="height: 400px; width: 400px; overflow:hidden !important; line-height: 1.35;white-space: nowrap;">'+
+    '<div style="width: 400px; overflow:hidden !important; line-height: 1.35;white-space: nowrap;">'+
       '<form action="#" id="formODPStatus" class="form-horizontal">'+
         '<div class="form-group">'+
           '<h4 align="center"><input name="PD_NAME" id="PD_NAME" maxlength="70" style="width: 300px; text-align: center;" value="'+ data.PD_NAME +'" class="form-control" type="text" readonly></h4>'+
@@ -7000,7 +7000,7 @@ function setContentDP(data,n){
     ||(n == "ON PROGRESS"))
   {
     var content_status =
-    '<div style="height: 400px; width: 400px; overflow:hidden !important; line-height: 1.35;white-space: nowrap;">'+
+    '<div style="width: 400px; overflow:hidden !important; line-height: 1.35;white-space: nowrap;">'+
       '<form action="#" id="formDPStatus" class="form-horizontal">'+
         '<div class="form-group">'+
           '<h4 align="center"><input name="DP" id="DP" maxlength="70" style="width: 300px; text-align: center;" value="'+ data.DP +'" class="form-control" type="text" readonly></h4>'+
@@ -7043,7 +7043,7 @@ function setContentDP(data,n){
   else
   {
     var content_status =
-    '<div style="height: 400px; width: 400px; overflow:hidden !important; line-height: 1.35;white-space: nowrap;">'+
+    '<div style="width: 400px; overflow:hidden !important; line-height: 1.35;white-space: nowrap;">'+
       '<form action="#" id="formDPStatus" class="form-horizontal">'+
         '<div class="form-group">'+
           '<h4 align="center"><input name="DP" id="DP" maxlength="70" style="width: 300px; text-align: center;" value="'+ data.DP +'" class="form-control" type="text" readonly></h4>'+
@@ -7087,7 +7087,7 @@ function setContentDP(data,n){
 
 function setContentODC(data){
   var content =
-  '<div style="height: 400px; width: 400px; overflow:hidden !important; line-height: 1.35;white-space: nowrap;">'+
+  '<div style="width: 400px; overflow:hidden !important; line-height: 1.35;white-space: nowrap;">'+
     '<form action="#" id="formDPStatus" class="form-horizontal">'+
       '<div class="form-group">'+
         '<h4 align="center"><input name="ODC" id="ODC" maxlength="70" style="width: 300px; text-align: center;" value="'+ data.NAME +'" class="form-control" type="text" readonly></h4>'+
@@ -7113,7 +7113,7 @@ function setContentODC(data){
 
 function setContentOther(data){
   var content =
-  '<div style="height: 400px; width: 400px; overflow:hidden !important; line-height: 1.35;white-space: nowrap;">'+
+  '<div style="width: 400px; overflow:hidden !important; line-height: 1.35;white-space: nowrap;">'+
     '<form action="#" id="formDPStatus" class="form-horizontal">'+
       '<div class="form-group">'+
         '<label class="control-label pull-left" style="margin-left: 15px">STO</label>'+
