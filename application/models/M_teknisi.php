@@ -352,7 +352,7 @@ class M_teknisi extends CI_Model
                         $insert_csv['CPE_SN'] = $csv_line[2];
                     }
                     $this->db->where('ND', $insert_csv['ND']);
-                    $this->db->where('ND_REF', $insert_csv['ND_REF']);
+                    $this->db->or_where('ND_REF', $insert_csv['ND_REF']);
                     $x = $this->db->get('master_maps');
                     if($x->num_rows() == 0)
                     {
