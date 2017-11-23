@@ -217,8 +217,6 @@ class M_teknisi extends CI_Model
                         $insert_csv['DESKRIPSI'] = $csv_line[4];
                         $insert_csv['MATERIAL'] = $csv_line[5];
                         $insert_csv['PELAKSANAAN'] = $csv_line[6];
-                        $insert_csv['LATITUDE'] = $csv_line[7];
-                        $insert_csv['LONGITUDE'] = $csv_line[8];
                     }
                     $this->db->where('PD_NAME', $insert_csv['ALPRO']);
                     $this->db->or_where('ODP_NAME', $insert_csv['ALPRO']);
@@ -232,8 +230,6 @@ class M_teknisi extends CI_Model
                             'DESKRIPSI' => $insert_csv['DESKRIPSI'],
                             'MATERIAL' => $insert_csv['MATERIAL'],
                             'PELAKSANAAN' => $insert_csv['PELAKSANAAN'],
-                            'LATITUDE' => $insert_csv['LATITUDE'],
-                            'LONGITUDE' => $insert_csv['LONGITUDE'],
                             'CSV' => '1'
                         );
                         $this->db->where('PD_NAME', $insert_csv['ALPRO']);
