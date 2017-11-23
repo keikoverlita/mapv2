@@ -349,32 +349,17 @@ class M_teknisi extends CI_Model
                         $insert_csv = array();
                         $insert_csv['ND'] = $csv_line[0];
                         $insert_csv['ND_REF'] = $csv_line[1];
-                        $insert_csv['IPTV'] = $csv_line[2];
-                        $insert_csv['NAMA'] = $csv_line[3];
-                        $insert_csv['RP_TAGIHAN'] = $csv_line[4];
-                        $insert_csv['RP_TAGIHAN_INET'] = $csv_line[5];
-                        $insert_csv['ALAMAT'] = $csv_line[6];
-                        $insert_csv['STP_TARGET'] = $csv_line[7];
-                        $insert_csv['CPE_SN'] = $csv_line[8];
-                        $insert_csv['RP_TOTAL'] = $csv_line[9];
+                        $insert_csv['CPE_SN'] = $csv_line[2];
                     }
                     $this->db->where('ND', $insert_csv['ND']);
+                    $this->db->where('ND_REF', $insert_csv['ND_REF']);
                     $x = $this->db->get('master_maps');
                     if($x->num_rows() == 0)
                     {
                         $data = array(
-                            'ND' => $insert_csv['ND'],
-                            'ND_REF' => $insert_csv['ND_REF'],
-                            'IPTV' => $insert_csv['IPTV'],
-                            'NAMA' => $insert_csv['NAMA'],
-                            'RP_TAGIHAN' => $insert_csv['RP_TAGIHAN'],
-                            'RP_TAGIHAN_INET' => $insert_csv['RP_TAGIHAN_INET'],
-                            'ALAMAT' => $insert_csv['ALAMAT'],
-                            'STP_TARGET' => $insert_csv['STP_TARGET'],
-                            'CPE_SN' => $insert_csv['CPE_SN'],
-                            'RP_TOTAL' => $insert_csv['RP_TOTAL']
+                            'CPE_SN' => $insert_csv['CPE_SN']
                         );
-                        $data['crane_features']=$this->db->insert('master_maps', $data);
+                        $data['crane_features']=$this->db->update('master_maps', $data);
                     }
                     if($data['crane_features'])
                     {
