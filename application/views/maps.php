@@ -1029,7 +1029,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <button class="btn btn-success" onclick="add_user()"><i class="glyphicon glyphicon-plus"></i> Add user</button>
+        <button id="modal-title-user" class="btn btn-success" onclick="add_user()"><i class="glyphicon glyphicon-plus"></i> Add user</button>
       </div>
       <div class="modal-body">
         <table id="table1" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -1754,7 +1754,7 @@ function add_user()
     $('.help-block').empty(); // clear error string
     $('#ModalUser').modal('hide');
     $('#modal_form').modal('show'); // show bootstrap modal
-    $('.modal-title').text('Add user'); // Set Title to Bootstrap modal title
+    $('#modal-title-user').text('Add user'); // Set Title to Bootstrap modal title
 }
 
 function edit_user(id_user)
@@ -1779,7 +1779,7 @@ function edit_user(id_user)
             $('[name="kontak"]').val(data.kontak);
             $('#ModalUser').modal('hide');
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
-            $('.modal-title').text('Edit user'); // Set title to Bootstrap modal title
+            $('#modal-title-user').text('Edit user'); // Set title to Bootstrap modal title
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
