@@ -864,7 +864,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h3 class="modal-title">User Form</h3>
+                <h3 id="modal-title-user" class="modal-title">User Form</h3>
             </div>
             <div class="modal-body form">
                 <form action="#" id="form" class="form-horizontal">
@@ -1029,7 +1029,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <button id="modal-title-user" class="btn btn-success" onclick="add_user()"><i class="glyphicon glyphicon-plus"></i> Add user</button>
+        <button class="btn btn-success" onclick="add_user()"><i class="glyphicon glyphicon-plus"></i> Add user</button>
       </div>
       <div class="modal-body">
         <table id="table1" class="table table-striped table-bordered" cellspacing="0" width="100%">
